@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 56edb2ed69176d14697ee41dbe4518a9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 66eae0bedc989e54d99dfd799bb08270, type: 2}
     - target: {fileID: 919132149155446097, guid: 56edb2ed69176d14697ee41dbe4518a9, type: 3}
       propertyPath: m_Name
       value: terrain_zombie

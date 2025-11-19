@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;   // For Button, Image, Text
+using UnityEngine.SceneManagement;   // Needed for scene loading
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -41,8 +42,8 @@ public class MainMenuUI : MonoBehaviour
 
         // Ensure consistent size in the Vertical Layout Group
         LayoutElement layout = buttonGO.AddComponent<LayoutElement>();
-        layout.preferredWidth = 2000f;   // was 250
-        layout.preferredHeight = 90f;   // was 60
+        layout.preferredWidth = 2000f;
+        layout.preferredHeight = 90f;
 
         // Create text child
         GameObject textGO = new GameObject("Text", typeof(RectTransform), typeof(Text));
@@ -53,7 +54,7 @@ public class MainMenuUI : MonoBehaviour
         text.alignment = TextAnchor.MiddleCenter;
         text.color = Color.white;
         text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");  // Unity 6 built-in font
-        text.fontSize = 40;  // was 24
+        text.fontSize = 40;
 
         // Stretch text to fill the button
         RectTransform textRect = textGO.GetComponent<RectTransform>();
@@ -68,7 +69,10 @@ public class MainMenuUI : MonoBehaviour
     // ----- Button callbacks -----
     private void OnEnterCity()
     {
-        Debug.Log("ENTER CITY clicked - will load world later.");
+        Debug.Log("ENTER CITY clicked - loading InitialCutscene.");
+
+        // Load the cutscene
+        SceneManager.LoadScene("InitialCutscene");
     }
 
     private void OnCharacter()

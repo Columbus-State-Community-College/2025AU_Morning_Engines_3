@@ -3,7 +3,37 @@ guid: b975756ea4b27ee43a8c01f38ae5df4c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlockOut_Mat01
+    second: {fileID: 2100000, guid: 65c9150477ef89f4d9c06d8267983c80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Enterable_Bldings_Mat01
+    second: {fileID: 2100000, guid: 4ce1a4c9578460a459d6ba9dbef782d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Lab_Mat01
+    second: {fileID: 2100000, guid: 7977240d2026a63489809d81c2d7b33c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NonEnterable_Bldings_Mat01
+    second: {fileID: 2100000, guid: 41a22623d1d74b94bb08074483a15c76, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Road_Mat01
+    second: {fileID: 2100000, guid: 7b643d2346ac94d4e93a0da250474722, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: standardSurface1
+    second: {fileID: 2100000, guid: bb9af00c3bf95214496027f7387243b7, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

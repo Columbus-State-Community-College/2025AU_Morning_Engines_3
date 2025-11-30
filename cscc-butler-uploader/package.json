@@ -1,0 +1,15 @@
+{
+  "name": "cscc-itch-butler-uploader",
+  "version": "1.3.1",
+  "description": "Itch.io Butler team-game upload tool designed for easy and secure use by students in the Columbus State Community College Game Development Capstone",
+  "license": "MIT",
+  "author": {
+    "name": "Tom @ CSCC",
+    "email": "tallenbaugh@cscc.edu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CSCC-Tom/cscc-itch-butler-uploader.git"
+  },
+  "dependencies": {}
+}

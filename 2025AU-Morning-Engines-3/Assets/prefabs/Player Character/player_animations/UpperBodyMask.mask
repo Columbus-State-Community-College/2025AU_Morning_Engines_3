@@ -1,0 +1,1487 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UpperBodyMask
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: BODY_TUNING
+    m_Weight: 0
+  - m_Path: geo_GRP
+    m_Weight: 0
+  - m_Path: geo_GRP/belt
+    m_Weight: 1
+  - m_Path: geo_GRP/belt_straps
+    m_Weight: 1
+  - m_Path: geo_GRP/buckle
+    m_Weight: 1
+  - m_Path: geo_GRP/eyes1
+    m_Weight: 1
+  - m_Path: geo_GRP/gloves
+    m_Weight: 1
+  - m_Path: geo_GRP/green_bucke
+    m_Weight: 1
+  - m_Path: geo_GRP/grey_straps
+    m_Weight: 1
+  - m_Path: geo_GRP/HAIR_STRANDS
+    m_Weight: 1
+  - m_Path: geo_GRP/head
+    m_Weight: 1
+  - m_Path: geo_GRP/hoddie
+    m_Weight: 1
+  - m_Path: geo_GRP/knee_pad
+    m_Weight: 1
+  - m_Path: geo_GRP/knee_strap
+    m_Weight: 1
+  - m_Path: geo_GRP/l_shoe_base
+    m_Weight: 1
+  - m_Path: geo_GRP/l_shoe_laces
+    m_Weight: 1
+  - m_Path: geo_GRP/l_shoe_sole
+    m_Weight: 1
+  - m_Path: geo_GRP/l_shoe_tongue
+    m_Weight: 1
+  - m_Path: geo_GRP/long_sleeve
+    m_Weight: 1
+  - m_Path: geo_GRP/pants
+    m_Weight: 1
+  - m_Path: geo_GRP/r_shoe_base
+    m_Weight: 1
+  - m_Path: geo_GRP/r_shoe_laces
+    m_Weight: 1
+  - m_Path: geo_GRP/r_shoe_sole
+    m_Weight: 1
+  - m_Path: geo_GRP/r_shoe_tongue
+    m_Weight: 1
+  - m_Path: geo_GRP/vest
+    m_Weight: 1
+  - m_Path: geo_GRP/vest_abs
+    m_Weight: 1
+  - m_Path: geo_GRP/vest_buckle
+    m_Weight: 1
+  - m_Path: geo_GRP/vest_side
+    m_Weight: 1
+  - m_Path: geo_GRP/vest_strap
+    m_Weight: 1
+  - m_Path: skeleton_GRP
+    m_Weight: 0
+  - m_Path: skeleton_GRP/bodyCtrls_GRP
+    m_Weight: 0
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/breathing_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/group1
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL/L_shoulder_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL/L_uparm_FK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL/L_uparm_FK_spaces_GRP/L_uparm_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL/L_uparm_FK_spaces_GRP/L_uparm_FK_CTRL/L_lowarm_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_clavicle_CTRL/L_uparm_FK_spaces_GRP/L_uparm_FK_CTRL/L_lowarm_FK_CTRL/L_hand_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_scapula_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_scapula_buffer_GRP/L_scapula_makro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/L_scapula_buffer_GRP/L_scapula_makro_GRP/L_scapula_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_bendy_buffer_GRP/neck_autobend_DRIVER
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_bendy_buffer_GRP/neck_bendy_autobend_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_bendy_buffer_GRP/neck_bendy_autobend_GRP/neck_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP/neck_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP/neck_CTRL/neck_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP/neck_CTRL/neck_sub_CTRL/head_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP/neck_CTRL/neck_sub_CTRL/head_spaces_GRP/head_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/neck_buffer_GRP/neck_spaces_GRP/neck_CTRL/neck_sub_CTRL/head_spaces_GRP/head_CTRL/head_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL/R_shoulder_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL/R_uparm_FK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL/R_uparm_FK_spaces_GRP/R_uparm_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL/R_uparm_FK_spaces_GRP/R_uparm_FK_CTRL/R_lowarm_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_clavicle_CTRL/R_uparm_FK_spaces_GRP/R_uparm_FK_CTRL/R_lowarm_FK_CTRL/R_hand_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_scapula_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_scapula_buffer_GRP/R_scapula_makro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/chest_up_CTRL/chest_up_SOCKET/R_arm_FKctrls_mirror_GRP/R_scapula_buffer_GRP/R_scapula_makro_GRP/R_scapula_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/ribcage_spineFollow_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/ribcage_spineFollow_GRP/ribcage_helper_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/chest_spaces_GRP/chest_CTRL/chest_sub_CTRL/chest_breath_DRIVE/ribcage_spineFollow_GRP/ribcage_helper_GRP/ribcage_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/crotch_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_hipjoint_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_hipjoint_IK_spaces_GRP/L_hipjoint_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_upleg_FK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_upleg_FK_spaces_GRP/L_upleg_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_upleg_FK_spaces_GRP/L_upleg_FK_CTRL/L_lowleg_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_upleg_FK_spaces_GRP/L_upleg_FK_CTRL/L_lowleg_FK_CTRL/L_foot_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/L_upleg_FK_spaces_GRP/L_upleg_FK_CTRL/L_lowleg_FK_CTRL/L_foot_FK_CTRL/L_toes_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_hipjoint_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_hipjoint_IK_spaces_GRP/R_hipjoint_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_upleg_FK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_upleg_FK_spaces_GRP/R_upleg_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_upleg_FK_spaces_GRP/R_upleg_FK_CTRL/R_lowleg_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_upleg_FK_spaces_GRP/R_upleg_FK_CTRL/R_lowleg_FK_CTRL/R_foot_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/hip_CTRL/hip_sub_CTRL/R_leg_FKctrls_mirror_GRP/R_upleg_FK_spaces_GRP/R_upleg_FK_CTRL/R_lowleg_FK_CTRL/R_foot_FK_CTRL/R_toes_FK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/spine_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/waist_twistori_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/fly_CTRL/cog_CTRL/body_CTRL/body_sub_CTRL/waist_twistori_GRP/waist_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_arm_polevector_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_arm_polevector_IK_spaces_GRP/L_arm_polevector_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_arm_switcher_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_elbow_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_elbow_bendy_buffer_GRP/L_elbow_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_hand_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_hand_IK_spaces_GRP/L_hand_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_hand_IK_spaces_GRP/L_hand_IK_CTRL/L_hand_IK_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_hand_IK_spaces_GRP/L_hand_IK_CTRL/L_hand_IK_sub_CTRL/L_hand_align_IK_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_hand_IK_spaces_GRP/L_hand_IK_CTRL/L_hand_IK_sub_CTRL/L_hand_align_IK_buffer_GRP/L_hand_align_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_lowarm_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_lowarm_bendy_buffer_GRP/L_lowarm_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_uparm_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_arm_IKctrls_GRP/L_uparm_bendy_buffer_GRP/L_uparm_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_fingerMaster_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_index_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_index_meta_CTRL/L_index_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_index_meta_CTRL/L_index_1_CTRL/L_index_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_index_meta_CTRL/L_index_1_CTRL/L_index_2_CTRL/L_index_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_middle_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_middle_meta_macro_GRP/L_middle_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_middle_meta_macro_GRP/L_middle_meta_CTRL/L_middle_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_middle_meta_macro_GRP/L_middle_meta_CTRL/L_middle_1_CTRL/L_middle_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_middle_meta_macro_GRP/L_middle_meta_CTRL/L_middle_1_CTRL/L_middle_2_CTRL/L_middle_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_pinky_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_pinky_meta_macro_GRP/L_pinky_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_pinky_meta_macro_GRP/L_pinky_meta_CTRL/L_pinky_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_pinky_meta_macro_GRP/L_pinky_meta_CTRL/L_pinky_1_CTRL/L_pinky_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_pinky_meta_macro_GRP/L_pinky_meta_CTRL/L_pinky_1_CTRL/L_pinky_2_CTRL/L_pinky_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_ring_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_ring_meta_macro_GRP/L_ring_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_ring_meta_macro_GRP/L_ring_meta_CTRL/L_ring_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_ring_meta_macro_GRP/L_ring_meta_CTRL/L_ring_1_CTRL/L_ring_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_ring_meta_macro_GRP/L_ring_meta_CTRL/L_ring_1_CTRL/L_ring_2_CTRL/L_ring_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_thumb_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_thumb_meta_CTRL/L_thumb_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_hand_ctrls_GRP/L_thumb_meta_CTRL/L_thumb_1_CTRL/L_thumb_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_heeloffset_ctrl_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_heeloffset_ctrl_GRP/L_ball_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_heeloffset_ctrl_GRP/L_toeroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_heeloffset_ctrl_GRP/L_toewiggle_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_heelroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_inroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_foot_IK_spaces_GRP/L_foot_IK_CTRL/L_foot_IK_sub_CTRL/L_roll_ctrls_GRP/L_outroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_knee_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_knee_bendy_buffer_GRP/L_knee_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_leg_polevector_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_leg_polevector_IK_spaces_GRP/L_leg_polevector_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_leg_switcher_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_lowleg_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_lowleg_bendy_buffer_GRP/L_lowleg_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC/L_heeloffset_loc_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC/L_heeloffset_loc_GRP/L_toeroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC/L_heeloffset_loc_GRP/L_toeroll_IK_LOC/L_ballswivel_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC/L_heeloffset_loc_GRP/L_toeroll_IK_LOC/L_ballswivel_IK_LOC/L_ball_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_roll_locs_GRP/L_outroll_IK_LOC/L_inroll_IK_LOC/L_heelroll_IK_LOC/L_heeloffset_loc_GRP/L_toeroll_IK_LOC/L_ballswivel_IK_LOC/L_toewiggle_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_upleg_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/L_leg_IKctrls_GRP/L_upleg_bendy_buffer_GRP/L_upleg_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/other_ctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/other_ctrls_GRP/L_armPole_line_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/other_ctrls_GRP/L_legPole_line_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/other_ctrls_GRP/R_armPole_line_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/other_ctrls_GRP/R_legPole_line_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_arm_polevector_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_arm_polevector_IK_spaces_GRP/R_arm_polevector_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_arm_switcher_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_elbow_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_elbow_bendy_buffer_GRP/R_elbow_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_hand_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_hand_IK_spaces_GRP/R_hand_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_hand_IK_spaces_GRP/R_hand_IK_CTRL/R_hand_IK_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_hand_IK_spaces_GRP/R_hand_IK_CTRL/R_hand_IK_sub_CTRL/R_hand_align_IK_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_hand_IK_spaces_GRP/R_hand_IK_CTRL/R_hand_IK_sub_CTRL/R_hand_align_IK_buffer_GRP/R_hand_align_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_lowarm_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_lowarm_bendy_buffer_GRP/R_lowarm_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_uparm_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_arm_IKctrls_mirror_GRP/R_uparm_bendy_buffer_GRP/R_uparm_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_fingerMaster_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_index_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_index_meta_CTRL/R_index_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_index_meta_CTRL/R_index_1_CTRL/R_index_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_index_meta_CTRL/R_index_1_CTRL/R_index_2_CTRL/R_index_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_middle_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_middle_meta_macro_GRP/R_middle_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_middle_meta_macro_GRP/R_middle_meta_CTRL/R_middle_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_middle_meta_macro_GRP/R_middle_meta_CTRL/R_middle_1_CTRL/R_middle_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_middle_meta_macro_GRP/R_middle_meta_CTRL/R_middle_1_CTRL/R_middle_2_CTRL/R_middle_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_pinky_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_pinky_meta_macro_GRP/R_pinky_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_pinky_meta_macro_GRP/R_pinky_meta_CTRL/R_pinky_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_pinky_meta_macro_GRP/R_pinky_meta_CTRL/R_pinky_1_CTRL/R_pinky_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_pinky_meta_macro_GRP/R_pinky_meta_CTRL/R_pinky_1_CTRL/R_pinky_2_CTRL/R_pinky_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_ring_meta_macro_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_ring_meta_macro_GRP/R_ring_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_ring_meta_macro_GRP/R_ring_meta_CTRL/R_ring_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_ring_meta_macro_GRP/R_ring_meta_CTRL/R_ring_1_CTRL/R_ring_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_ring_meta_macro_GRP/R_ring_meta_CTRL/R_ring_1_CTRL/R_ring_2_CTRL/R_ring_3_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_thumb_meta_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_thumb_meta_CTRL/R_thumb_1_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_hand_ctrls_mirror_GRP/R_hand_ctrls_GRP/R_thumb_meta_CTRL/R_thumb_1_CTRL/R_thumb_2_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_heeloffset_ctrl_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_heeloffset_ctrl_GRP/R_ball_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_heeloffset_ctrl_GRP/R_toeroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_heeloffset_ctrl_GRP/R_toewiggle_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_heelroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_inroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_foot_IK_spaces_GRP/R_foot_IK_CTRL/R_foot_IK_sub_CTRL/R_roll_ctrls_GRP/R_outroll_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_knee_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_knee_bendy_buffer_GRP/R_knee_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_leg_polevector_IK_spaces_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_leg_polevector_IK_spaces_GRP/R_leg_polevector_IK_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_leg_switcher_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_lowleg_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_lowleg_bendy_buffer_GRP/R_lowleg_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC/R_heeloffset_loc_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC/R_heeloffset_loc_GRP/R_toeroll_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC/R_heeloffset_loc_GRP/R_toeroll_IK_LOC/R_ballswivel_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC/R_heeloffset_loc_GRP/R_toeroll_IK_LOC/R_ballswivel_IK_LOC/R_ball_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_roll_locs_GRP/R_outroll_IK_LOC/R_inroll_IK_LOC/R_heelroll_IK_LOC/R_heeloffset_loc_GRP/R_toeroll_IK_LOC/R_ballswivel_IK_LOC/R_toewiggle_IK_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_upleg_bendy_buffer_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/bodyCtrls_GRP/global_CTRL/global_sub_CTRL/R_leg_IKctrls_mirror_GRP/R_upleg_bendy_buffer_GRP/R_upleg_bendy_CTRL
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/crotch_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_hip_partial_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_hip_partial_JNT/L_butt_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_quad_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_tensor_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_FK_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_FK_JNT/L_lowleg_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_FK_JNT/L_lowleg_FK_JNT/L_foot_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_FK_JNT/L_lowleg_FK_JNT/L_foot_FK_JNT/L_toes_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_FK_JNT/L_lowleg_FK_JNT/L_foot_FK_JNT/L_toes_FK_JNT/L_toes_end_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_IK_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_IK_JNT/L_lowleg_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_IK_JNT/L_lowleg_IK_JNT/L_foot_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_IK_JNT/L_lowleg_IK_JNT/L_foot_IK_JNT/L_toes_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_IK_JNT/L_lowleg_IK_JNT/L_foot_IK_JNT/L_toes_IK_JNT/L_toes_end_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_knee_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_knee_JNT/L_knee_corr_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_knee_JNT/L_kneecap_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_ankle_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_ankle_JNT/L_achilles_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_ankle_JNT/L_anklefront_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_foot_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_foot_JNT/L_toes_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_foot_JNT/L_toes_JNT/L_toes_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_kneecap_low_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_lowleg_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_lowleg_2_JNT/L_calf_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_lowleg_2_JNT/L_lowleg_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_lowleg_2_JNT/L_lowleg_3_JNT/L_lowleg_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_lowleg_JNT/L_lowleg_1_JNT/L_lowleg_2_JNT/L_lowleg_3_JNT/L_lowleg_4_JNT/L_lowleg_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT/L_upleg_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT/L_upleg_3_JNT/L_upleg_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT/L_upleg_3_JNT/L_upleg_4_JNT/L_hamstrings_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT/L_upleg_3_JNT/L_upleg_4_JNT/L_kneecap_up_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/L_upleg_JNT/L_upleg_1_JNT/L_upleg_2_JNT/L_upleg_3_JNT/L_upleg_4_JNT/L_upleg_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_hip_partial_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_hip_partial_JNT/R_butt_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_quad_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_tensor_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_FK_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_FK_JNT/R_lowleg_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_FK_JNT/R_lowleg_FK_JNT/R_foot_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_FK_JNT/R_lowleg_FK_JNT/R_foot_FK_JNT/R_toes_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_FK_JNT/R_lowleg_FK_JNT/R_foot_FK_JNT/R_toes_FK_JNT/R_toes_end_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_IK_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_IK_JNT/R_lowleg_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_IK_JNT/R_lowleg_IK_JNT/R_foot_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_IK_JNT/R_lowleg_IK_JNT/R_foot_IK_JNT/R_toes_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_IK_JNT/R_lowleg_IK_JNT/R_foot_IK_JNT/R_toes_IK_JNT/R_toes_end_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT
+    m_Weight: 0
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_knee_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_knee_JNT/R_knee_corr_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_knee_JNT/R_kneecap_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_ankle_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_ankle_JNT/R_achilles_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_ankle_JNT/R_anklefront_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_foot_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_foot_JNT/R_toes_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_foot_JNT/R_toes_JNT/R_toes_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_kneecap_low_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_lowleg_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_lowleg_2_JNT/R_calf_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_lowleg_2_JNT/R_lowleg_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_lowleg_2_JNT/R_lowleg_3_JNT/R_lowleg_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_lowleg_JNT/R_lowleg_1_JNT/R_lowleg_2_JNT/R_lowleg_3_JNT/R_lowleg_4_JNT/R_lowleg_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT/R_upleg_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT/R_upleg_3_JNT/R_upleg_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT/R_upleg_3_JNT/R_upleg_4_JNT/R_hamstrings_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT/R_upleg_3_JNT/R_upleg_4_JNT/R_kneecap_up_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/R_upleg_JNT/R_upleg_1_JNT/R_upleg_2_JNT/R_upleg_3_JNT/R_upleg_4_JNT/R_upleg_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT/spine_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT/spine_5_JNT/spine_6_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT/spine_5_JNT/spine_6_JNT/spine_7_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT/spine_5_JNT/spine_6_JNT/spine_7_JNT/ribcage_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/spine_1_JNT/spine_2_JNT/spine_3_JNT/spine_4_JNT/spine_5_JNT/spine_6_JNT/spine_7_JNT/spine_8_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_breast_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_deltoid_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_scapula_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_scapula_JNT/L_backdelt_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_scapula_JNT/L_scapula_tip_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_traps_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_FK_JNT/L_lowarm_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_FK_JNT/L_lowarm_FK_JNT/L_hand_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_FK_JNT/L_lowarm_FK_JNT/L_hand_FK_JNT/L_hand_end_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_IK_JNT/L_lowarm_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_IK_JNT/L_lowarm_IK_JNT/L_hand_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_IK_JNT/L_lowarm_IK_JNT/L_hand_IK_JNT/L_hand_end_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_elbow_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_elbow_JNT/L_elbow_corr_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_hand_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT/L_index_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT/L_index_2_JNT/L_index_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT/L_index_2_JNT/L_index_3_JNT/L_index_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT/L_index_2_JNT/L_index_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_JNT/L_index_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_index_meta_JNT/L_index_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT/L_middle_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT/L_middle_2_JNT/L_middle_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT/L_middle_2_JNT/L_middle_3_JNT/L_middle_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT/L_middle_2_JNT/L_middle_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_JNT/L_middle_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_middle_meta_JNT/L_middle_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT/L_pinky_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT/L_pinky_2_JNT/L_pinky_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT/L_pinky_2_JNT/L_pinky_3_JNT/L_pinky_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT/L_pinky_2_JNT/L_pinky_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_JNT/L_pinky_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_pinky_meta_JNT/L_pinky_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT/L_ring_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT/L_ring_2_JNT/L_ring_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT/L_ring_2_JNT/L_ring_3_JNT/L_ring_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT/L_ring_2_JNT/L_ring_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_JNT/L_ring_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_ring_meta_JNT/L_ring_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT/L_thumb_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT/L_thumb_1_JNT/L_thumb_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT/L_thumb_1_JNT/L_thumb_2_JNT/L_thumb_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT/L_thumb_1_JNT/L_thumb_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_meta_JNT/L_thumb_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_hand_JNT/L_thumb_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_lowarm_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_wrist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_wrist_JNT/L_wrist_down_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_wrist_JNT/L_wrist_in_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_wrist_JNT/L_wrist_out_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_lowarm_JNT/L_lowarm_1_JNT/L_lowarm_2_JNT/L_lowarm_3_JNT/L_lowarm_4_JNT/L_wrist_JNT/L_wrist_up_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_uparm_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_uparm_1_JNT/L_uparm_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_uparm_1_JNT/L_uparm_2_JNT/L_uparm_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_uparm_1_JNT/L_uparm_2_JNT/L_uparm_3_JNT/L_uparm_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_clavicle_JNT/L_uparm_JNT/L_uparm_1_JNT/L_uparm_2_JNT/L_uparm_3_JNT/L_uparm_4_JNT/L_uparm_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_lats_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/L_pectoral_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/head_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/head_JNT/head_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/neck_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/neck_1_JNT/neck_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/neck_1_JNT/neck_2_JNT/neck_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/neck_1_JNT/neck_2_JNT/neck_3_JNT/neck_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/neck_JNT/neck_1_JNT/neck_2_JNT/neck_3_JNT/neck_4_JNT/neck_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_breast_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_deltoid_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_scapula_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_scapula_JNT/R_backdelt_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_scapula_JNT/R_scapula_tip_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_traps_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_FK_JNT/R_lowarm_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_FK_JNT/R_lowarm_FK_JNT/R_hand_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_FK_JNT/R_lowarm_FK_JNT/R_hand_FK_JNT/R_hand_end_FK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_IK_JNT/R_lowarm_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_IK_JNT/R_lowarm_IK_JNT/R_hand_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_IK_JNT/R_lowarm_IK_JNT/R_hand_IK_JNT/R_hand_end_IK_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_elbow_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_elbow_JNT/R_elbow_corr_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_hand_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT/R_index_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT/R_index_2_JNT/R_index_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT/R_index_2_JNT/R_index_3_JNT/R_index_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT/R_index_2_JNT/R_index_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_JNT/R_index_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_index_meta_JNT/R_index_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT/R_middle_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT/R_middle_2_JNT/R_middle_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT/R_middle_2_JNT/R_middle_3_JNT/R_middle_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT/R_middle_2_JNT/R_middle_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_JNT/R_middle_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_middle_meta_JNT/R_middle_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT/R_pinky_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT/R_pinky_2_JNT/R_pinky_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT/R_pinky_2_JNT/R_pinky_3_JNT/R_pinky_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT/R_pinky_2_JNT/R_pinky_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_JNT/R_pinky_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_pinky_meta_JNT/R_pinky_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT/R_ring_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT/R_ring_2_JNT/R_ring_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT/R_ring_2_JNT/R_ring_3_JNT/R_ring_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT/R_ring_2_JNT/R_ring_3_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_JNT/R_ring_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_ring_meta_JNT/R_ring_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT/R_thumb_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT/R_thumb_1_JNT/R_thumb_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT/R_thumb_1_JNT/R_thumb_2_JNT/R_thumb_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT/R_thumb_1_JNT/R_thumb_2_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_meta_JNT/R_thumb_1_partial_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_hand_JNT/R_thumb_palm_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_lowarm_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_wrist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_wrist_JNT/R_wrist_down_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_wrist_JNT/R_wrist_in_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_wrist_JNT/R_wrist_out_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_lowarm_JNT/R_lowarm_1_JNT/R_lowarm_2_JNT/R_lowarm_3_JNT/R_lowarm_4_JNT/R_wrist_JNT/R_wrist_up_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_uparm_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_uparm_1_JNT/R_uparm_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_uparm_1_JNT/R_uparm_2_JNT/R_uparm_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_uparm_1_JNT/R_uparm_2_JNT/R_uparm_3_JNT/R_uparm_4_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_clavicle_JNT/R_uparm_JNT/R_uparm_1_JNT/R_uparm_2_JNT/R_uparm_3_JNT/R_uparm_4_JNT/R_uparm_5_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_lats_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_pectoral_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP
+    m_Weight: 0
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_elbow_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_elbow_master_LOC/L_elbow_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_elbow_master_LOC/L_elbow_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_hipjoint_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_hipjoint_master_LOC/L_hipjoint_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_hipjoint_master_LOC/L_hipjoint_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_hipjoint_master_LOC/L_hipjoint_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_hipjoint_master_LOC/L_hipjoint_upmax_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_knee_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_knee_master_LOC/L_knee_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_knee_master_LOC/L_knee_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_knee_master_LOC/L_knee_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_shoulder_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_shoulder_master_LOC/L_shoulder_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_shoulder_master_LOC/L_shoulder_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_shoulder_master_LOC/L_shoulder_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_wrist_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_wrist_master_LOC/L_wrist_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_wrist_master_LOC/L_wrist_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/L_wrist_master_LOC/L_wrist_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_elbow_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_elbow_master_LOC/R_elbow_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_elbow_master_LOC/R_elbow_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_hipjoint_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_hipjoint_master_LOC/R_hipjoint_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_hipjoint_master_LOC/R_hipjoint_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_hipjoint_master_LOC/R_hipjoint_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_hipjoint_master_LOC/R_hipjoint_upmax_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_knee_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_knee_master_LOC/R_knee_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_knee_master_LOC/R_knee_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_knee_master_LOC/R_knee_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_shoulder_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_shoulder_master_LOC/R_shoulder_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_shoulder_master_LOC/R_shoulder_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_shoulder_master_LOC/R_shoulder_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_wrist_master_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_wrist_master_LOC/R_wrist_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_wrist_master_LOC/R_wrist_side_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP/R_wrist_master_LOC/R_wrist_up_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_backdelt_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_backdelt_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_breast_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_breast_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_deltoid_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_deltoid_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_lats_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_lats_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_pectoral_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_pectoral_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_quad_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_quad_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_tensor_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_tensor_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_traps_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/L_side/L_traps_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_backdelt_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_backdelt_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_breast_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_breast_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_deltoid_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_deltoid_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_lats_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_lats_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_pectoral_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_pectoral_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_quad_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_quad_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_tensor_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_tensor_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_traps_end_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/muscle_GRP/R_side/R_traps_start_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/correctiveDrivers_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/correctiveDrivers_GRP/spine_8_corrDriver_main_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/correctiveDrivers_GRP/spine_8_corrDriver_main_LOC/spine_8_corrDriver_bend_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/correctiveDrivers_GRP/spine_8_corrDriver_main_LOC/spine_8_corrDriver_follow_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/correctiveDrivers_GRP/spine_8_corrDriver_main_LOC/spine_8_corrDriver_tilt_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_arm_IKR
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_elbow_offset_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_foot_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_hand_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_knee_offset_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_leg_ball_IKstretch_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_leg_ball_IKstretch_LOC/L_leg_ankle_IKstretch_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_leg_IKR
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP/L_lowarm_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP/L_lowarm_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP/L_lowarm_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP/L_lowarm_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_ikSpline_GRP/L_lowarm_twist_GRP/L_lowarm_twist_JNT/L_lowarm_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowarm_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP/L_lowleg_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP/L_lowleg_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP/L_lowleg_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP/L_lowleg_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_ikSpline_GRP/L_lowleg_twist_GRP/L_lowleg_twist_JNT/L_lowleg_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_lowleg_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_toes_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP/L_uparm_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP/L_uparm_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP/L_uparm_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP/L_uparm_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_ikSpline_GRP/L_uparm_twist_GRP/L_uparm_twist_JNT/L_uparm_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_uparm_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP/L_upleg_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP/L_upleg_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP/L_upleg_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP/L_upleg_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_ikSpline_GRP/L_upleg_twist_GRP/L_upleg_twist_JNT/L_upleg_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/L_upleg_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP/neck_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP/neck_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP/neck_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP/neck_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/neck_ikSpline_GRP/neck_twist_GRP/neck_twist_JNT/neck_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_arm_IKR
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_elbow_offset_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_foot_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_hand_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_knee_offset_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_leg_ball_IKstretch_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_leg_ball_IKstretch_LOC/R_leg_ankle_IKstretch_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_leg_IKR
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP/R_lowarm_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP/R_lowarm_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP/R_lowarm_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP/R_lowarm_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_ikSpline_GRP/R_lowarm_twist_GRP/R_lowarm_twist_JNT/R_lowarm_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowarm_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP/R_lowleg_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP/R_lowleg_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP/R_lowleg_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP/R_lowleg_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_ikSpline_GRP/R_lowleg_twist_GRP/R_lowleg_twist_JNT/R_lowleg_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_lowleg_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_toes_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP/R_uparm_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP/R_uparm_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP/R_uparm_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP/R_uparm_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_ikSpline_GRP/R_uparm_twist_GRP/R_uparm_twist_JNT/R_uparm_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_uparm_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_bendy_1_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_bendy_2_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_bendy_3_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP/R_upleg_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP/R_upleg_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP/R_upleg_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP/R_upleg_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_ikSpline_GRP/R_upleg_twist_GRP/R_upleg_twist_JNT/R_upleg_twist_end_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/R_upleg_thickness_channels_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/shoe_heel_offset_driver_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/shoe_heel_offset_driver_GRP/ankle_driver_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/shoe_heel_offset_driver_GRP/ball_driver_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_IKS
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_ikSpline_CRV
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP/spine_baseTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP/spine_endTwist_LOC
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP/spine_twist_IKH
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP/spine_twist_JNT
+    m_Weight: 1
+  - m_Path: skeleton_GRP/misc_GRP/spine_ikSpline_GRP/spine_twist_GRP/spine_twist_JNT/spine_twist_end_JNT
+    m_Weight: 1

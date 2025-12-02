@@ -6,25 +6,59 @@ public class PlayerVehicleSwitcher : MonoBehaviour
     public OnFootPlayerController onFootController;
     public CharacterController characterController;
     public Camera onFootCamera;
-    public GameObject playerVisualRoot; // <--- NEW
+
+    [Tooltip("Root transform for the player's visual mesh (do NOT assign the whole Player root).")]
+    public Transform playerVisualRoot;
 
     [Header("Interaction")]
     public KeyCode interactKey = KeyCode.E;
     public float interactionRadius = 3f;
-    public LayerMask truckLayer;
+    public LayerMask truckLayer; // can be 0 (Everything) and rely on tag
 
-    [Header("Camera")]
-    public Vector3 truckCameraOffset = new Vector3(0f, 2.0f, -5.0f);
+    [Header("Truck Camera")]
+    public Vector3 truckCameraOffset = new Vector3(0f, 2.0f, -5.0f); // behind + above seat
 
     [Header("State")]
     public bool inVehicle = false;
 
     private TruckController currentTruck;
+    private Renderer[] playerRenderers;
 
-    private void Reset()
+    // Camera original state
+    private Transform originalCameraParent;
+    private Vector3 originalCameraLocalPos;
+    private Quaternion originalCameraLocalRot;
+
+    private void Awake()
     {
-        onFootController = GetComponent<OnFootPlayerController>();
-        characterController = GetComponent<CharacterController>();
+        if (onFootController == null)
+            onFootController = GetComponent<OnFootPlayerController>();
+
+        if (characterController == null)
+            characterController = GetComponent<CharacterController>();
+
+        // Cache renderers so we can hide/show the player model
+        if (playerVisualRoot != null)
+        {
+            playerRenderers = playerVisualRoot.GetComponentsInChildren<Renderer>(true);
+        }
+        else
+        {
+            Debug.LogWarning("PlayerVehicleSwitcher: playerVisualRoot is not assigned. Player will stay visible in vehicle.");
+        }
+
+        // Cache the original camera parent + local transform so we can restore it exactly
+        if (onFootCamera != null)
+        {
+            Transform camTransform = onFootCamera.transform;
+            originalCameraParent = camTransform.parent;
+            originalCameraLocalPos = camTransform.localPosition;
+            originalCameraLocalRot = camTransform.localRotation;
+        }
+        else
+        {
+            Debug.LogWarning("PlayerVehicleSwitcher: onFootCamera is not assigned.");
+        }
     }
 
     private void Update()
@@ -44,18 +78,23 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         if (!Input.GetKeyDown(interactKey))
             return;
 
-        Collider[] hits = Physics.OverlapSphere(transform.position, interactionRadius,
-            truckLayer.value == 0 ? ~0 : truckLayer);
+        // Look for a truck near the player
+        Collider[] hits = Physics.OverlapSphere(
+            transform.position,
+            interactionRadius,
+            truckLayer.value == 0 ? ~0 : truckLayer
+        );
 
         TruckController truck = null;
 
         for (int i = 0; i < hits.Length; i++)
         {
             truck = hits[i].GetComponentInParent<TruckController>();
-            if (truck != null) break;
+            if (truck != null)
+                break;
         }
 
-        // Fallback by tag
+        // Fallback by tag if no truck via layer
         if (truck == null)
         {
             hits = Physics.OverlapSphere(transform.position, interactionRadius);
@@ -64,7 +103,8 @@ public class PlayerVehicleSwitcher : MonoBehaviour
                 if (hits[i].CompareTag("Truck"))
                 {
                     truck = hits[i].GetComponentInParent<TruckController>();
-                    if (truck != null) break;
+                    if (truck != null)
+                        break;
                 }
             }
         }
@@ -84,6 +124,10 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         {
             ExitVehicle();
         }
+        else
+        {
+            Debug.LogWarning("InVehicle is true but currentTruck is null.");
+        }
     }
 
     private void EnterVehicle(TruckController truck)
@@ -97,18 +141,17 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         inVehicle = true;
         currentTruck = truck;
 
-        // Disable on-foot control
-        onFootController.isActive = false;
+        // Disable on-foot movement and look
+        if (onFootController != null)
+            onFootController.isActive = false;
+
         if (characterController != null)
             characterController.enabled = false;
 
-        // OPTIONAL: hide the player mesh while in vehicle
-        if (playerVisualRoot != null)
-        {
-            playerVisualRoot.SetActive(false);
-        }
+        // Hide the player mesh while in the vehicle (but NOT the whole GameObject)
+        SetPlayerVisible(false);
 
-        // Move player root to seat
+        // Parent player root to seatPoint and snap to it
         transform.SetParent(truck.seatPoint, worldPositionStays: false);
         transform.localPosition = Vector3.zero;
         transform.localRotation = Quaternion.identity;
@@ -116,51 +159,97 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         // Move camera to seatPoint with offset
         if (onFootCamera != null)
         {
-            onFootCamera.transform.SetParent(truck.seatPoint, worldPositionStays: false);
-            onFootCamera.transform.localPosition = truckCameraOffset;
-            onFootCamera.transform.localRotation = Quaternion.identity;
+            Transform camTransform = onFootCamera.transform;
+            camTransform.SetParent(truck.seatPoint, worldPositionStays: false);
+            camTransform.localPosition = truckCameraOffset;
+            camTransform.localRotation = Quaternion.identity;
         }
 
-        // Activate truck control
+        // Enable truck control
         truck.SetActive(true);
+
+        Debug.Log("Entered vehicle.");
     }
 
     private void ExitVehicle()
     {
+        if (currentTruck == null)
+        {
+            Debug.LogWarning("Tried to exit vehicle but currentTruck is null.");
+            return;
+        }
+
+        Debug.Log("Exiting vehicle...");
+
         inVehicle = false;
 
         // Unparent player from truck
         transform.SetParent(null, worldPositionStays: true);
 
-        // Place player at exit point
+        // Decide where to place the player
+        Vector3 targetPos;
+        Quaternion targetRot;
+
         if (currentTruck.exitPoint != null)
         {
-            transform.position = currentTruck.exitPoint.position;
-            transform.rotation = currentTruck.exitPoint.rotation;
+            targetPos = currentTruck.exitPoint.position;
+            targetRot = currentTruck.exitPoint.rotation;
+            Debug.Log("Using exitPoint on truck.");
+        }
+        else
+        {
+            // Fallback: left side of truck + a bit up
+            targetPos = currentTruck.transform.position
+                        + currentTruck.transform.right * -2f
+                        + Vector3.up * 1f;
+
+            targetRot = Quaternion.LookRotation(currentTruck.transform.forward);
+            Debug.LogWarning("No exitPoint on truck, using fallback exit position.");
         }
 
-        // Move camera back to player
+        transform.position = targetPos;
+        transform.rotation = targetRot;
+
+        // Restore camera to its original parent and local transform
         if (onFootCamera != null)
         {
-            onFootCamera.transform.SetParent(onFootController.transform, worldPositionStays: false);
-            onFootCamera.transform.localPosition = new Vector3(0f, 1.7f, 0f);
-            onFootCamera.transform.localRotation = Quaternion.identity;
+            Transform camTransform = onFootCamera.transform;
+
+            // Restore parent
+            camTransform.SetParent(originalCameraParent, worldPositionStays: false);
+
+            // Restore original position/rotation relative to that parent
+            camTransform.localPosition = originalCameraLocalPos;
+            camTransform.localRotation = originalCameraLocalRot;
         }
 
-        // Turn player mesh back on
-        if (playerVisualRoot != null)
-        {
-            playerVisualRoot.SetActive(true);
-        }
+        // Show player again
+        SetPlayerVisible(true);
 
-        // Reactivate on-foot control
+        // Reactivate on-foot movement
         if (characterController != null)
             characterController.enabled = true;
-        onFootController.isActive = true;
+
+        if (onFootController != null)
+            onFootController.isActive = true;
 
         // Disable truck control
         currentTruck.SetActive(false);
         currentTruck = null;
+
+        Debug.Log("Finished exiting vehicle.");
+    }
+
+    private void SetPlayerVisible(bool visible)
+    {
+        if (playerRenderers == null || playerRenderers.Length == 0)
+            return;
+
+        foreach (var rend in playerRenderers)
+        {
+            if (rend != null)
+                rend.enabled = visible;
+        }
     }
 
     private void OnDrawGizmosSelected()

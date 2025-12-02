@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 339ee302b6b9b7e48993808ee9ae3e4d
+guid: e7e906fc1da71e04f8571ca7c91b05cf
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,18 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZomMale_Body_Mat01
-    second: {fileID: 2100000, guid: 8c78496c9db719a4c851f819b8b0a0ce, type: 2}
+      name: ZombieRig__ZomMale_Body_Mat01
+    second: {fileID: 2100000, guid: e1ace1323b069ef49988ef7dafc8b8bc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZomMale_Hair_Mat01
-    second: {fileID: 2100000, guid: 40b34309613b921418f5eff453cb44cf, type: 2}
+      name: ZombieRig__ZomMale_Hair_Mat01
+    second: {fileID: 2100000, guid: 3ebfde854b51d124199ee04c19f12fe4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ZomMale_InnerFace_Mat01
-    second: {fileID: 2100000, guid: 7f29b9ff42871e64fbc836b3f3b7c974, type: 2}
+      name: ZombieRig__ZomMale_InnerFace_Mat01
+    second: {fileID: 2100000, guid: 4e9a544abeda12749b8e6141a1de2a48, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -44,11 +44,40 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle_Anim_01
+      takeName: Take 001
+      internalID: 1827226128182048838
+      firstFrame: 1
+      lastFrame: 44
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 1.98
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -103,7 +132,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 1.98
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

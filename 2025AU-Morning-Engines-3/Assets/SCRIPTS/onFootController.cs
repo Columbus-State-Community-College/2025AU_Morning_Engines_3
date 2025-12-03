@@ -196,4 +196,7 @@ public class OnFootPlayerController : MonoBehaviour
             animator.SetTrigger(shootTriggerParam);
         }
     }
+
+    // 👇 This is the property the camera script will read
+    public bool IsAiming => isAiming;
 }

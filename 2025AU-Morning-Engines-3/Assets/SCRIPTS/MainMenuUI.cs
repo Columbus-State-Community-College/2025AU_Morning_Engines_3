@@ -69,10 +69,10 @@ public class MainMenuUI : MonoBehaviour
     // ----- Button callbacks -----
     private void OnEnterCity()
     {
-        Debug.Log("ENTER CITY clicked - loading InitialCutscene.");
+        Debug.Log("ENTER CITY clicked - loading DNT.");
 
-        // Load the cutscene
-        SceneManager.LoadScene("InitialCutscene");
+        // Load your in-game scene
+        SceneManager.LoadScene("DNT");
     }
 
     private void OnCharacter()

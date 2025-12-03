@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,6 +16,9 @@ public class ZombieAI : MonoBehaviour
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackCooldown = 1f; // seconds between hits
 
+    [Header("Visual Feedback")]
+    [SerializeField] private float attackFlashDuration = 0.1f;
+
     private Transform player;
     private PlayerHealth playerHealth;
 
@@ -23,10 +27,21 @@ public class ZombieAI : MonoBehaviour
     private Rigidbody rb;
     private bool isChasing = false;
 
+    private Renderer zombieRenderer;
+    private Color originalColor;
+    private Coroutine flashRoutine;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation; // prevents tipping over
+
+        // Grab any renderer on this object or its children
+        zombieRenderer = GetComponentInChildren<Renderer>();
+        if (zombieRenderer != null)
+        {
+            originalColor = zombieRenderer.material.color;
+        }
     }
 
     private void Start()
@@ -97,9 +112,29 @@ public class ZombieAI : MonoBehaviour
                     playerHealth.TakeDamage(attackDamage);
                     lastAttackTime = Time.time;
                     Debug.Log($"{name} attacked player for {attackDamage} damage.");
+
+                    TriggerAttackEffects();
                 }
             }
         }
+    }
+
+    private void TriggerAttackEffects()
+    {
+        if (zombieRenderer == null) return;
+
+        if (flashRoutine != null)
+        {
+            StopCoroutine(flashRoutine);
+        }
+        flashRoutine = StartCoroutine(FlashRedCoroutine());
+    }
+
+    private IEnumerator FlashRedCoroutine()
+    {
+        zombieRenderer.material.color = Color.red;
+        yield return new WaitForSeconds(attackFlashDuration);
+        zombieRenderer.material.color = originalColor;
     }
 
     // Just to visualize the detection radius in Scene view

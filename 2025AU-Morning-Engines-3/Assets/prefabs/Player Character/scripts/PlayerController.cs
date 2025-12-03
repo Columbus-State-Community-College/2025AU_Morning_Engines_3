@@ -11,22 +11,29 @@ public class PlayerController : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
 
-    [Header("References")]
-    public Animator animator;
+    [Header("Animator Reference")]
+    [SerializeField] private Animator animator;
+
+    [Header("Animator Parameter Names")]
+    [SerializeField] private string speedParam = "Speed";
+    [SerializeField] private string isRunningParam = "IsRunning";
+    [SerializeField] private string jumpTriggerParam = "Jump";
+    [SerializeField] private string aimBoolParam = "IsAiming";
+    [SerializeField] private string shootTriggerParam = "Shoot";
 
     private CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
-
-    // we cache aiming state so shoot can check it
-    private bool isAiming;
+    private bool isAiming;   // local state we control
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
 
         if (animator == null)
+        {
             animator = GetComponentInChildren<Animator>();
+        }
     }
 
     void Update()
@@ -38,67 +45,87 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        // ground check
+        // Ground check
         isGrounded = controller.isGrounded;
         if (isGrounded && velocity.y < 0f)
+        {
             velocity.y = -2f;
+        }
 
         float vertical = 0f;
 
-        // W / S for forward/backward
+        // W / S input
         if (Input.GetKey(KeyCode.W))
             vertical = 1f;
         else if (Input.GetKey(KeyCode.S))
             vertical = -1f;
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        bool wantsRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         float moveSpeed = 0f;
         if (vertical > 0f)
-            moveSpeed = isRunning ? runSpeed : walkSpeed;
+            moveSpeed = wantsRun ? runSpeed : walkSpeed;
         else if (vertical < 0f)
-            moveSpeed = isRunning ? backwardRunSpeed : backwardWalkSpeed;
+            moveSpeed = wantsRun ? backwardRunSpeed : backwardWalkSpeed;
 
-        // move along local forward axis
         Vector3 move = transform.forward * vertical;
         controller.Move(move * moveSpeed * Time.deltaTime);
 
-        // gravity
+        // Gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // animator params for locomotion
+        // Animator params
         float animSpeed = 0f;
         if (vertical > 0f) animSpeed = 1f;
         else if (vertical < 0f) animSpeed = -1f;
 
-        animator.SetFloat("Speed", animSpeed);
-        animator.SetBool("IsRunning", isRunning);
+        if (animator != null)
+        {
+            animator.SetFloat(speedParam, animSpeed);
+            animator.SetBool(isRunningParam, wantsRun);
+        }
     }
 
     void HandleJump()
     {
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (!isGrounded) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-            animator.SetTrigger("Jump");
+
+            if (animator != null && !string.IsNullOrEmpty(jumpTriggerParam))
+            {
+                animator.SetTrigger(jumpTriggerParam);
+            }
         }
     }
 
     /// <summary>
-    /// Handles BOTH aiming and shooting so they always work together.
-    /// Right mouse = aim (hold), Left mouse while aiming = shoot.
+    /// RIGHT MOUSE (hold) = aim
+    /// LEFT MOUSE (while aiming) = shoot
     /// </summary>
     void HandleAimAndShoot()
     {
-        // RIGHT MOUSE: hold to aim
-        isAiming = Input.GetMouseButton(1);        // true while button held
-        animator.SetBool("IsAiming", isAiming);    // drives UpperBody layer
+        if (animator == null) return;
 
-        // LEFT MOUSE: shoot ONLY if we are aiming
+        // Hold right mouse to aim
+        bool rightHeld = Input.GetMouseButton(1);
+
+        if (rightHeld != isAiming)
+        {
+            isAiming = rightHeld;
+            animator.SetBool(aimBoolParam, isAiming);
+            Debug.Log(isAiming ? "AIM ON" : "AIM OFF");
+        }
+
+        // Shoot only while aiming
         if (isAiming && Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger("Shoot");
+            Debug.Log("SHOOT pressed while aiming");
+            animator.ResetTrigger(shootTriggerParam);
+            animator.SetTrigger(shootTriggerParam);
         }
     }
 }

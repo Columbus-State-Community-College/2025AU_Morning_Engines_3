@@ -216,18 +216,18 @@ ModelImporter:
     serializedVersion: 3
     human: []
     skeleton:
-    - name: Containment_man_mesh(Clone)
+    - name: MainCharacter(Clone)
       parentName: 
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: BODY_TUNING
-      parentName: Containment_man_mesh(Clone)
+      parentName: MainCharacter(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: geo_GRP
-      parentName: Containment_man_mesh(Clone)
+      parentName: MainCharacter(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -367,7 +367,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: skeleton_GRP
-      parentName: Containment_man_mesh(Clone)
+      parentName: MainCharacter(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}

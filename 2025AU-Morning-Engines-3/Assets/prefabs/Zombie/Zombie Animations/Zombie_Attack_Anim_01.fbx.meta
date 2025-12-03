@@ -31,7 +31,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Zom_Attack_Vers01_Anim
+      name: Zom_Attack_Anim01
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 1

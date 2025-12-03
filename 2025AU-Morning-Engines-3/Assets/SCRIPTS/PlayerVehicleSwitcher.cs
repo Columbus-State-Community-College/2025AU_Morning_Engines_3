@@ -29,6 +29,9 @@ public class PlayerVehicleSwitcher : MonoBehaviour
     private Vector3 originalCameraLocalPos;
     private Quaternion originalCameraLocalRot;
 
+    // Remember original player scale so we can always restore it
+    private Vector3 originalPlayerLocalScale;
+
     private void Awake()
     {
         if (onFootController == null)
@@ -59,6 +62,9 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         {
             Debug.LogWarning("PlayerVehicleSwitcher: onFootCamera is not assigned.");
         }
+
+        // Store original player scale (as placed in the scene)
+        originalPlayerLocalScale = transform.localScale;
     }
 
     private void Update()
@@ -151,16 +157,25 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         // Hide the player mesh while in the vehicle (but NOT the whole GameObject)
         SetPlayerVisible(false);
 
-        // Parent player root to seatPoint and snap to it
-        transform.SetParent(truck.seatPoint, worldPositionStays: false);
-        transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        // Make sure our scale starts at the original value
+        transform.localScale = originalPlayerLocalScale;
 
-        // Move camera to seatPoint with offset
+        // Parent player to seatPoint BUT keep world transform the same
+        transform.SetParent(truck.seatPoint, worldPositionStays: true);
+
+        // Now explicitly snap position/rotation to the seatPoint
+        transform.position = truck.seatPoint.position;
+        transform.rotation = truck.seatPoint.rotation;
+
+        // Move camera to seatPoint with offset, but also keep its world scale safe
         if (onFootCamera != null)
         {
             Transform camTransform = onFootCamera.transform;
-            camTransform.SetParent(truck.seatPoint, worldPositionStays: false);
+
+            // Parent camera while keeping world transform
+            camTransform.SetParent(truck.seatPoint, worldPositionStays: true);
+
+            // Then apply local offset relative to seatPoint
             camTransform.localPosition = truckCameraOffset;
             camTransform.localRotation = Quaternion.identity;
         }
@@ -183,7 +198,7 @@ public class PlayerVehicleSwitcher : MonoBehaviour
 
         inVehicle = false;
 
-        // Unparent player from truck
+        // Unparent player but keep world position/rotation/scale the same
         transform.SetParent(null, worldPositionStays: true);
 
         // Decide where to place the player
@@ -210,15 +225,15 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         transform.position = targetPos;
         transform.rotation = targetRot;
 
+        // Hard reset the player's scale to what it was in the scene
+        transform.localScale = originalPlayerLocalScale;
+
         // Restore camera to its original parent and local transform
         if (onFootCamera != null)
         {
             Transform camTransform = onFootCamera.transform;
 
-            // Restore parent
             camTransform.SetParent(originalCameraParent, worldPositionStays: false);
-
-            // Restore original position/rotation relative to that parent
             camTransform.localPosition = originalCameraLocalPos;
             camTransform.localRotation = originalCameraLocalRot;
         }

@@ -414,9 +414,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 3
-  runSpeed: 6
+  runSpeed: 10
   backwardWalkSpeed: 2.5
-  backwardRunSpeed: 4.5
+  backwardRunSpeed: 6
   gravity: -9.81
   jumpHeight: 1.5
   cameraTransform: {fileID: 979586070}
@@ -1410,13 +1410,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417048530}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.088047944, y: -0.2577415, z: -0.023592373, w: 0.9619045}
+  m_LocalRotation: {x: 0.94662434, y: 0.051481854, z: 0.25364724, w: -0.19213289}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -10.46, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 202.947, y: -30, z: 0}
 --- !u!1001 &1438959520
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1026,7 +1026,7 @@ AvatarMask:
   - m_Path: skeleton_GRP/joints_GRP/root_JNT/hip_JNT/waist_JNT/chest_JNT/chest_up_JNT/R_pectoral_JNT
     m_Weight: 1
   - m_Path: skeleton_GRP/misc_GRP
-    m_Weight: 0
+    m_Weight: 1
   - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP
     m_Weight: 1
   - m_Path: skeleton_GRP/misc_GRP/corrective_drivers_GRP/angle_GRP

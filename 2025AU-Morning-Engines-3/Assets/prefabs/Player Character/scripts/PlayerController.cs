@@ -18,9 +18,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
     private bool isGrounded;
 
+    // we cache aiming state so shoot can check it
+    private bool isAiming;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
         if (animator == null)
             animator = GetComponentInChildren<Animator>();
     }
@@ -29,45 +33,44 @@ public class PlayerController : MonoBehaviour
     {
         HandleMovement();
         HandleJump();
-        HandleAim();
-        HandleShoot();
+        HandleAimAndShoot();
     }
 
     void HandleMovement()
     {
-        // Ground check
+        // ground check
         isGrounded = controller.isGrounded;
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0f)
             velocity.y = -2f;
 
         float vertical = 0f;
 
-        // W / S input
+        // W / S for forward/backward
         if (Input.GetKey(KeyCode.W))
             vertical = 1f;
         else if (Input.GetKey(KeyCode.S))
             vertical = -1f;
 
-        bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
         float moveSpeed = 0f;
-        if (vertical > 0)
+        if (vertical > 0f)
             moveSpeed = isRunning ? runSpeed : walkSpeed;
-        else if (vertical < 0)
+        else if (vertical < 0f)
             moveSpeed = isRunning ? backwardRunSpeed : backwardWalkSpeed;
 
-        // Move in forward direction
+        // move along local forward axis
         Vector3 move = transform.forward * vertical;
         controller.Move(move * moveSpeed * Time.deltaTime);
 
-        // Gravity
+        // gravity
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
 
-        // Animator params
+        // animator params for locomotion
         float animSpeed = 0f;
-        if (vertical > 0) animSpeed = 1f;
-        else if (vertical < 0) animSpeed = -1f;
+        if (vertical > 0f) animSpeed = 1f;
+        else if (vertical < 0f) animSpeed = -1f;
 
         animator.SetFloat("Speed", animSpeed);
         animator.SetBool("IsRunning", isRunning);
@@ -82,17 +85,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void HandleAim()
+    /// <summary>
+    /// Handles BOTH aiming and shooting so they always work together.
+    /// Right mouse = aim (hold), Left mouse while aiming = shoot.
+    /// </summary>
+    void HandleAimAndShoot()
     {
-        // Right mouse button
-        bool isAiming = Input.GetMouseButton(1);
-        animator.SetBool("IsAiming", isAiming);
-    }
+        // RIGHT MOUSE: hold to aim
+        isAiming = Input.GetMouseButton(1);        // true while button held
+        animator.SetBool("IsAiming", isAiming);    // drives UpperBody layer
 
-    void HandleShoot()
-    {
-        // Left mouse button
-        if (Input.GetMouseButtonDown(0))
+        // LEFT MOUSE: shoot ONLY if we are aiming
+        if (isAiming && Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("Shoot");
         }

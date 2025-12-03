@@ -1,9 +1,144 @@
 fileFormatVersion: 2
-guid: e3b876948f903ed4995734d267cb2f82
+guid: 5c0f1cc91139e4d428600d380288ef9a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt_straps_tex
+    second: {fileID: 2100000, guid: 72ba5de4723853f4a998ff155fe75263, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: belt_tex
+    second: {fileID: 2100000, guid: 5f78c8bf4213d984e9f6795a2f9525e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: buckle_tex
+    second: {fileID: 2100000, guid: d1c6a5eca82ed9447ae8957cd0a4ab23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: eyes_tex
+    second: {fileID: 2100000, guid: 64f9a96c5ff1725498ad2e87c08f2324, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gloves_tex
+    second: {fileID: 2100000, guid: 1164b1d21d00b284aafcb436447561b4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: green_buckle_tex
+    second: {fileID: 2100000, guid: 18651655048e165449647cf296b68894, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grey_straps1
+    second: {fileID: 2100000, guid: a2f415d7f20c1b24686c0c6591518d66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hair_strands_tex
+    second: {fileID: 2100000, guid: 30911c6dce85cf34d9a5a85f932517d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: head_tex
+    second: {fileID: 2100000, guid: ee39b2c36929d6e42a2cd2a4812d72a0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: hoddie_tex
+    second: {fileID: 2100000, guid: e21eca25cd5240c46bbb6fb229b54a23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: knee_pad_tex
+    second: {fileID: 2100000, guid: 5caad0f6956a2604cbf3f5f44ada2d8c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: knee_strap_tex
+    second: {fileID: 2100000, guid: f695542c4714a3c43b813d375beb9e90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: l_shoe_base_tex
+    second: {fileID: 2100000, guid: 6acec2dc499ca8b41814408a0dabf44a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: l_shoe_laces_tex
+    second: {fileID: 2100000, guid: 2aa749576171ca0479154b76690cdcb3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: l_shoe_sole_tex
+    second: {fileID: 2100000, guid: 50c3b829743dc6c4e82051c87d50750f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: l_shoe_tongue_tex
+    second: {fileID: 2100000, guid: 97490e1a8585840419d58f6dffb1ed01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: longsleeve_tex
+    second: {fileID: 2100000, guid: ee60838d09391da4f97b182037c53ff3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pants_tex
+    second: {fileID: 2100000, guid: ed7a4066c71f73f4a84f092429ba3c5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: r_shoe_base_tex
+    second: {fileID: 2100000, guid: 8fcc222349bc8bb4cbac79efe47cde38, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: r_shoe_laces_tex
+    second: {fileID: 2100000, guid: 4163e2f8d0de2074db6dc74d5e82e406, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: r_shoe_sole_tex
+    second: {fileID: 2100000, guid: 405b7262f63ab9240a6c9f6b3c590680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: r_shoe_tongue_tex
+    second: {fileID: 2100000, guid: 564f3acb5e2573645811bcc1ba1fffe4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vest_abs_tex
+    second: {fileID: 2100000, guid: 26336e260153d9249b8c59f2355315d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vest_buckle_tex
+    second: {fileID: 2100000, guid: 3c79689a2bbfac7479ec191b80b616e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vest_side_tex
+    second: {fileID: 2100000, guid: 726023a1440205443a291dd949551a1c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vest_strap_tex
+    second: {fileID: 2100000, guid: 13b05e0b29acd834397f56fd1e28a5c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vest_tex
+    second: {fileID: 2100000, guid: 67824510956043547aa3f7719b200502, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -22,43 +157,14 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: walk_forwards_animation
-      takeName: Take 001
-      internalID: 1827226128182048838
-      firstFrame: 1
-      lastFrame: 31
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 0
   meshes:
     lODScreenPercentages: []
@@ -3812,11 +3918,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 5c0f1cc91139e4d428600d380288ef9a, type: 3}
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 2
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

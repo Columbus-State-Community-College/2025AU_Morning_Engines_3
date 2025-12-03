@@ -15,7 +15,7 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   gaussianStart:
     m_OverrideState: 1
     m_Value: 10
@@ -108,7 +108,7 @@ MonoBehaviour:
   active: 1
   shadows:
     m_OverrideState: 1
-    m_Value: {x: 0.80207086, y: 0.8212148, z: 1, w: 0}
+    m_Value: {x: 0.84319836, y: 0.9276967, z: 1, w: 0}
   midtones:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}

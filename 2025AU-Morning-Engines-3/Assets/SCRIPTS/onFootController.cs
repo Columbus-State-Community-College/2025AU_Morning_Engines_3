@@ -1,10 +1,13 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 public class OnFootPlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed = 5f;
+    public float walkSpeed = 3f;
+    public float runSpeed = 6f;
+    public float backwardWalkSpeed = 2.5f;
+    public float backwardRunSpeed = 4.5f;
     public float gravity = -9.81f;
     public float jumpHeight = 1.5f;
 
@@ -13,11 +16,23 @@ public class OnFootPlayerController : MonoBehaviour
     public float mouseSensitivity = 2f;
     public float verticalLookLimit = 80f;
 
+    [Header("Animator Reference")]
+    [SerializeField] private Animator animator;
+
+    [Header("Animator Parameter Names")]
+    [SerializeField] private string speedParam = "Speed";
+    [SerializeField] private string isRunningParam = "IsRunning";
+    [SerializeField] private string jumpTriggerParam = "Jump";
+    [SerializeField] private string aimBoolParam = "IsAiming";
+    [SerializeField] private string shootTriggerParam = "Shoot";
+
     [Header("State")]
-    public bool isActive = true; // Turned off when in vehicle
+    public bool isActive = true; // can turn off when in vehicle, cutscene, etc.
 
     private CharacterController controller;
-    private Vector3 velocity;
+    private Vector3 verticalVelocity; // only Y is used
+    private bool isGrounded;
+    private bool isAiming;
     private float xRotation = 0f;
 
     private void Awake()
@@ -32,6 +47,11 @@ public class OnFootPlayerController : MonoBehaviour
             cameraTransform = Camera.main.transform;
         }
 
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -42,49 +62,141 @@ public class OnFootPlayerController : MonoBehaviour
             return;
 
         HandleLook();
-        HandleMovement();
+        GroundCheck();
+        HandleMovement();     // horizontal movement + walk/run anims
+        HandleJump();         // instant jump + animation
+        ApplyGravity();       // vertical movement
+        HandleAimAndShoot();  // right mouse aim, left mouse shoot
     }
 
+    // ------------ LOOK (mouse) ------------
     private void HandleLook()
     {
+        if (cameraTransform == null) return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotate around Y (turn left/right)
+        // Rotate player left/right
         transform.Rotate(Vector3.up * mouseX);
 
-        // Vertical camera rotation (look up/down)
+        // Rotate camera up/down
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit);
 
-        if (cameraTransform != null)
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    // ------------ GROUND CHECK ------------
+    private void GroundCheck()
+    {
+        isGrounded = controller.isGrounded;
+
+        // tiny downward force to keep us grounded
+        if (isGrounded && verticalVelocity.y < 0f)
         {
-            cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            verticalVelocity.y = -2f;
         }
     }
 
+    // ------------ MOVEMENT + RUN FORWARD/BACKWARD ------------
     private void HandleMovement()
     {
         // WASD input
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal"); // A / D
+        float v = Input.GetAxisRaw("Vertical");   // W / S
 
-        Vector3 move = transform.right * h + transform.forward * v;
-        controller.Move(move * moveSpeed * Time.deltaTime);
+        bool wantsRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
-        // Gravity
-        if (controller.isGrounded && velocity.y < 0f)
+        // Decide speed based on forward/back & run
+        float moveSpeed = 0f;
+
+        if (v > 0f) // forward
         {
-            velocity.y = -2f; // small downward force to keep grounded
+            moveSpeed = wantsRun ? runSpeed : walkSpeed;
+        }
+        else if (v < 0f) // backward
+        {
+            moveSpeed = wantsRun ? backwardRunSpeed : backwardWalkSpeed;
+        }
+        else if (Mathf.Abs(h) > 0.01f) // strafing only
+        {
+            moveSpeed = walkSpeed;
         }
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
-
-        // Simple jump
-        if (controller.isGrounded && Input.GetButtonDown("Jump"))
+        // Combine directions
+        Vector3 moveDirection = (transform.right * h + transform.forward * v);
+        if (moveDirection.sqrMagnitude > 1f)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            moveDirection.Normalize();
+        }
+
+        Vector3 horizontalMove = moveDirection * moveSpeed * Time.deltaTime;
+        controller.Move(horizontalMove);
+
+        // ----- Animator: Speed & IsRunning -----
+        if (animator != null)
+        {
+            // Speed is just direction along Z input: forward=1, backward=-1
+            float animSpeed = 0f;
+            if (v > 0f) animSpeed = 1f;
+            else if (v < 0f) animSpeed = -1f;
+
+            animator.SetFloat(speedParam, animSpeed);
+
+            bool isMovingForwardOrBack = Mathf.Abs(v) > 0.1f;
+            animator.SetBool(isRunningParam, wantsRun && isMovingForwardOrBack);
         }
     }
+
+    // ------------ JUMP (instant animation + physics) ------------
+    private void HandleJump()
+    {
+        // Only jump when grounded & space pressed this frame
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
+        {
+            // 1) Trigger jump animation immediately
+            if (animator != null && !string.IsNullOrEmpty(jumpTriggerParam))
+            {
+                animator.SetTrigger(jumpTriggerParam);
+            }
+
+            // 2) Apply jump velocity same frame
+            verticalVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+    }
+
+    // ------------ GRAVITY / VERTICAL MOVEMENT ------------
+    private void ApplyGravity()
+    {
+        verticalVelocity.y += gravity * Time.deltaTime;
+        controller.Move(verticalVelocity * Time.deltaTime);
+    }
+
+    // ------------ AIM + SHOOT (upper body) ------------
+    // Right mouse (hold) = aim (IsAiming true)
+    // Left mouse (while aiming) = shoot (Shoot trigger)
+    private void HandleAimAndShoot()
+    {
+        if (animator == null) return;
+
+        // RMB hold → aiming
+        bool rightHeld = Input.GetMouseButton(1);
+
+        if (rightHeld != isAiming)
+        {
+            isAiming = rightHeld;
+            animator.SetBool(aimBoolParam, isAiming);
+        }
+
+        // LMB click while aiming → shoot
+        if (isAiming && Input.GetMouseButtonDown(0))
+        {
+            animator.ResetTrigger(shootTriggerParam);
+            animator.SetTrigger(shootTriggerParam);
+        }
+    }
+
+    // 👇 This is the property the camera script will read
+    public bool IsAiming => isAiming;
 }

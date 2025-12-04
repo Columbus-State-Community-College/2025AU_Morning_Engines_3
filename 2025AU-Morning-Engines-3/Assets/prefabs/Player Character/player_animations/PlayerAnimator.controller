@@ -325,9 +325,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Strafe
     m_EventTreshold: 0.5
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2032153622176362661}
   m_Solo: 0
@@ -356,33 +353,33 @@ AnimatorStateMachine:
     m_Position: {x: 59, y: 259, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8179838315272000187}
-    m_Position: {x: 392, y: 330, z: 0}
+    m_Position: {x: 50, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 453624048847079134}
-    m_Position: {x: 400, y: 420, z: 0}
+    m_Position: {x: 60, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -1193775774289986978}
-    m_Position: {x: 410, y: 170, z: 0}
+    m_Position: {x: 300, y: 480, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5641120830223608729}
-    m_Position: {x: 190, y: 140, z: 0}
+    m_Position: {x: -70, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1965441991814700427}
-    m_Position: {x: 400, y: 250, z: 0}
+    m_Position: {x: 300, y: 380, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4676534781711278727}
-    m_Position: {x: 378.99496, y: 67.08795, z: 0}
+    m_Position: {x: 390, y: 60, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4540094043724039905}
-    m_Position: {x: 362.26135, y: -39.680145, z: 0}
+    m_Position: {x: 110, y: 10, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 3928240031619061430}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
-  m_EntryPosition: {x: 20, y: 120, z: 0}
+  m_AnyStatePosition: {x: -160, y: 90, z: 0}
+  m_EntryPosition: {x: -240, y: 240, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -2032153622176362661}
@@ -481,9 +478,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: Strafe
     m_EventTreshold: -0.5
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2032153622176362661}
   m_Solo: 0
@@ -590,9 +584,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 3
     m_ConditionEvent: Strafe
     m_EventTreshold: 0.5
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4540094043724039905}
   m_Solo: 0
@@ -715,9 +706,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 4
     m_ConditionEvent: Strafe
     m_EventTreshold: -0.5
-  - m_ConditionMode: 3
-    m_ConditionEvent: Speed
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -4676534781711278727}
   m_Solo: 0

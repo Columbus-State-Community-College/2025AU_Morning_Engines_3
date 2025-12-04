@@ -55,6 +55,12 @@ public class OnFootPlayerController : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
         }
 
+        // Safety: if the Inspector has an empty string, force "Strafe"
+        if (string.IsNullOrWhiteSpace(strafeParam))
+        {
+            strafeParam = "Strafe";
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -156,9 +162,13 @@ public class OnFootPlayerController : MonoBehaviour
             else if (h > 0.1f)  // D key
                 strafe = 1f;    // walk right
 
-            if (!string.IsNullOrEmpty(strafeParam))
+            animator.SetFloat(strafeParam, strafe);
+
+            // DEBUG: see what we're sending to the Animator
+            // Comment this out later if it spams too much
+            if (Mathf.Abs(strafe) > 0.1f || Mathf.Abs(animSpeed) > 0.1f)
             {
-                animator.SetFloat(strafeParam, strafe);
+                Debug.Log($"OnFootPlayerController - v:{v} h:{h}  Speed:{animSpeed}  Strafe:{strafe}");
             }
         }
     }

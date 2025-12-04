@@ -26,6 +26,9 @@ public class OnFootPlayerController : MonoBehaviour
     [SerializeField] private string aimBoolParam = "IsAiming";
     [SerializeField] private string shootTriggerParam = "Shoot";
 
+    // NEW: for left/right walk
+    [SerializeField] private string strafeParam = "Strafe"; // float: -1 left, 0 idle, 1 right
+
     [Header("State")]
     public bool isActive = true; // can turn off when in vehicle, cutscene, etc.
 
@@ -134,18 +137,29 @@ public class OnFootPlayerController : MonoBehaviour
         Vector3 horizontalMove = moveDirection * moveSpeed * Time.deltaTime;
         controller.Move(horizontalMove);
 
-        // ----- Animator: Speed & IsRunning -----
+        // ----- Animator: Speed, IsRunning, Strafe -----
         if (animator != null)
         {
-            // Speed is just direction along Z input: forward=1, backward=-1
+            // Forward/back speed param (same as before)
             float animSpeed = 0f;
             if (v > 0f) animSpeed = 1f;
             else if (v < 0f) animSpeed = -1f;
-
             animator.SetFloat(speedParam, animSpeed);
 
             bool isMovingForwardOrBack = Mathf.Abs(v) > 0.1f;
             animator.SetBool(isRunningParam, wantsRun && isMovingForwardOrBack);
+
+            // NEW: Strafe param for left/right walk
+            float strafe = 0f;
+            if (h < -0.1f)      // A key
+                strafe = -1f;   // walk left
+            else if (h > 0.1f)  // D key
+                strafe = 1f;    // walk right
+
+            if (!string.IsNullOrEmpty(strafeParam))
+            {
+                animator.SetFloat(strafeParam, strafe);
+            }
         }
     }
 

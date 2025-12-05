@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class OnFootPlayerController : MonoBehaviour
@@ -26,11 +28,19 @@ public class OnFootPlayerController : MonoBehaviour
     [SerializeField] private string aimBoolParam = "IsAiming";
     [SerializeField] private string shootTriggerParam = "Shoot";
 
-    // NEW: for left/right walk
+    // for left/right walk
     [SerializeField] private string strafeParam = "Strafe"; // float: -1 left, 0 idle, 1 right
 
     [Header("State")]
     public bool isActive = true; // can turn off when in vehicle, cutscene, etc.
+
+    [Header("Shooting / Ammo")]
+    public int maxAmmo = 8;              // bullets that fit in the shotgun
+    public int currentAmmo;              // current bullets in the gun
+    public TMP_Text ammoText;            // UI text: "Ammo: x / y"
+    public TMP_Text promptText;          // UI text: "Find ammo" / "Press R to reload"
+
+    private bool isInAmmoBoxRange = false;
 
     private CharacterController controller;
     private Vector3 verticalVelocity; // only Y is used
@@ -63,6 +73,14 @@ public class OnFootPlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        // --- Ammo setup ---
+        currentAmmo = maxAmmo;
+        UpdateAmmoUI();
+        if (promptText != null)
+        {
+            promptText.text = "";
+        }
     }
 
     private void Update()
@@ -75,7 +93,7 @@ public class OnFootPlayerController : MonoBehaviour
         HandleMovement();     // horizontal movement + walk/run anims
         HandleJump();         // instant jump + animation
         ApplyGravity();       // vertical movement
-        HandleAimAndShoot();  // right mouse aim, left mouse shoot
+        HandleAimAndShoot();  // right mouse aim, left mouse shoot + ammo + reload
     }
 
     // ------------ LOOK (mouse) ------------
@@ -155,7 +173,7 @@ public class OnFootPlayerController : MonoBehaviour
             bool isMovingForwardOrBack = Mathf.Abs(v) > 0.1f;
             animator.SetBool(isRunningParam, wantsRun && isMovingForwardOrBack);
 
-            // NEW: Strafe param for left/right walk
+            // Strafe param for left/right walk
             float strafe = 0f;
             if (h < -0.1f)      // A key
                 strafe = -1f;   // walk left
@@ -197,9 +215,10 @@ public class OnFootPlayerController : MonoBehaviour
         controller.Move(verticalVelocity * Time.deltaTime);
     }
 
-    // ------------ AIM + SHOOT (upper body) ------------
-    // Right mouse (hold) = aim (IsAiming true)
-    // Left mouse (while aiming) = shoot (Shoot trigger)
+    // ------------ AIM + SHOOT + AMMO / RELOAD ------------
+    // Right mouse (hold) = aim
+    // Left mouse (while aiming) = shoot (uses 1 ammo)
+    // R = reload ONLY while inside an ammo box trigger
     private void HandleAimAndShoot()
     {
         if (animator == null) return;
@@ -216,8 +235,106 @@ public class OnFootPlayerController : MonoBehaviour
         // LMB click while aiming → shoot
         if (isAiming && Input.GetMouseButtonDown(0))
         {
-            animator.ResetTrigger(shootTriggerParam);
-            animator.SetTrigger(shootTriggerParam);
+            // no ammo: show "find ammo" and do nothing else
+            if (currentAmmo <= 0)
+            {
+                ShowFindAmmoMessage();
+            }
+            else
+            {
+                // trigger shoot animation
+                animator.ResetTrigger(shootTriggerParam);
+                animator.SetTrigger(shootTriggerParam);
+
+                // TODO: put your real shoot logic here (raycast, spawn projectile, sound, etc.)
+
+                // consume one bullet
+                currentAmmo--;
+                UpdateAmmoUI();
+
+                // if just hit 0, tell player to find ammo
+                if (currentAmmo <= 0)
+                {
+                    ShowFindAmmoMessage();
+                }
+            }
+        }
+
+        // R = try reload (only works if standing on ammo box)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            TryReload();
+        }
+    }
+
+    private void TryReload()
+    {
+        // must be standing in an ammo box trigger
+        if (!isInAmmoBoxRange)
+            return;
+
+        // already full
+        if (currentAmmo >= maxAmmo)
+        {
+            if (promptText != null)
+                promptText.text = "";
+            return;
+        }
+
+        // refill to full
+        currentAmmo = maxAmmo;
+        UpdateAmmoUI();
+
+        if (promptText != null)
+            promptText.text = "";
+    }
+
+    private void ShowFindAmmoMessage()
+    {
+        if (promptText != null)
+        {
+            promptText.text = "Out of ammo! FIND AMMO!";
+        }
+    }
+
+    private void UpdateAmmoUI()
+    {
+        if (ammoText != null)
+        {
+            ammoText.text = "Ammo: " + currentAmmo + " / " + maxAmmo;
+        }
+    }
+
+    // When player steps into an ammo box trigger
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AmmoBox"))
+        {
+            isInAmmoBoxRange = true;
+
+            // if missing ammo, show "Press R"
+            if (currentAmmo < maxAmmo && promptText != null)
+            {
+                promptText.text = "Press R to reload ammo";
+            }
+        }
+    }
+
+    // When player leaves the ammo box trigger
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("AmmoBox"))
+        {
+            isInAmmoBoxRange = false;
+
+            if (promptText != null)
+            {
+                // if still empty, show "find ammo", else clear text
+                if (currentAmmo <= 0)
+                    ShowFindAmmoMessage();
+                else
+                    promptText.text = "";
+            }
         }
     }
 

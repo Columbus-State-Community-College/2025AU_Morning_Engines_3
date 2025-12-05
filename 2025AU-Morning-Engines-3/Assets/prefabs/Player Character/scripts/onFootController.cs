@@ -27,23 +27,26 @@ public class OnFootPlayerController : MonoBehaviour
     [SerializeField] private string jumpTriggerParam = "Jump";
     [SerializeField] private string aimBoolParam = "IsAiming";
     [SerializeField] private string shootTriggerParam = "Shoot";
-
-    // for left/right walk
-    [SerializeField] private string strafeParam = "Strafe"; // float: -1 left, 0 idle, 1 right
+    [SerializeField] private string reloadTriggerParam = "Reload"; // MUST match Animator Trigger
+    [SerializeField] private string strafeParam = "Strafe";        // -1 left, 0 idle, 1 right
 
     [Header("State")]
-    public bool isActive = true; // can turn off when in vehicle, cutscene, etc.
+    public bool isActive = true;
 
     [Header("Shooting / Ammo")]
-    public int maxAmmo = 8;              // bullets that fit in the shotgun
-    public int currentAmmo;              // current bullets in the gun
-    public TMP_Text ammoText;            // UI text: "Ammo: x / y"
-    public TMP_Text promptText;          // UI text: "Find ammo" / "Press R to reload"
+    public int maxAmmo = 8;
+    public int currentAmmo;
+    public TMP_Text ammoText;    // UI: bottom right
+    public TMP_Text promptText;  // UI: messages like "Out of ammo", "Press R..."
 
+    // Ammo box interaction (trigger-based)
     private bool isInAmmoBoxRange = false;
+    private bool hasPickedUpAmmoFromBox = false; // becomes true after E
+    private GameObject currentAmmoBox = null;    // the box we're standing in
+    private TMP_Text currentBoxWorldPrompt = null; // 3D TMP text above the box
 
     private CharacterController controller;
-    private Vector3 verticalVelocity; // only Y is used
+    private Vector3 verticalVelocity;
     private bool isGrounded;
     private bool isAiming;
     private float xRotation = 0f;
@@ -56,31 +59,22 @@ public class OnFootPlayerController : MonoBehaviour
     private void Start()
     {
         if (cameraTransform == null && Camera.main != null)
-        {
             cameraTransform = Camera.main.transform;
-        }
 
         if (animator == null)
-        {
             animator = GetComponentInChildren<Animator>();
-        }
 
-        // Safety: if the Inspector has an empty string, force "Strafe"
         if (string.IsNullOrWhiteSpace(strafeParam))
-        {
             strafeParam = "Strafe";
-        }
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        // --- Ammo setup ---
+        // Ammo setup
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
         if (promptText != null)
-        {
             promptText.text = "";
-        }
     }
 
     private void Update()
@@ -90,13 +84,14 @@ public class OnFootPlayerController : MonoBehaviour
 
         HandleLook();
         GroundCheck();
-        HandleMovement();     // horizontal movement + walk/run anims
-        HandleJump();         // instant jump + animation
-        ApplyGravity();       // vertical movement
-        HandleAimAndShoot();  // right mouse aim, left mouse shoot + ammo + reload
+        HandleMovement();
+        HandleJump();
+        ApplyGravity();
+        HandleAimAndShoot();
+        HandleAmmoBoxInteraction(); // E + R + destroy box
     }
 
-    // ------------ LOOK (mouse) ------------
+    // ------------- LOOK -------------
     private void HandleLook()
     {
         if (cameraTransform == null) return;
@@ -104,176 +99,156 @@ public class OnFootPlayerController : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        // Rotate player left/right
         transform.Rotate(Vector3.up * mouseX);
 
-        // Rotate camera up/down
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit);
-
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    // ------------ GROUND CHECK ------------
+    // ------------- GROUND CHECK -------------
     private void GroundCheck()
     {
         isGrounded = controller.isGrounded;
 
-        // tiny downward force to keep us grounded
         if (isGrounded && verticalVelocity.y < 0f)
-        {
             verticalVelocity.y = -2f;
-        }
     }
 
-    // ------------ MOVEMENT + RUN FORWARD/BACKWARD ------------
+    // ------------- MOVEMENT -------------
     private void HandleMovement()
     {
-        // WASD input
         float h = Input.GetAxisRaw("Horizontal"); // A / D
         float v = Input.GetAxisRaw("Vertical");   // W / S
 
         bool wantsRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
-        // Decide speed based on forward/back & run
         float moveSpeed = 0f;
-
-        if (v > 0f) // forward
-        {
+        if (v > 0f)
             moveSpeed = wantsRun ? runSpeed : walkSpeed;
-        }
-        else if (v < 0f) // backward
-        {
+        else if (v < 0f)
             moveSpeed = wantsRun ? backwardRunSpeed : backwardWalkSpeed;
-        }
-        else if (Mathf.Abs(h) > 0.01f) // strafing only
-        {
+        else if (Mathf.Abs(h) > 0.01f)
             moveSpeed = walkSpeed;
-        }
 
-        // Combine directions
-        Vector3 moveDirection = (transform.right * h + transform.forward * v);
-        if (moveDirection.sqrMagnitude > 1f)
-        {
-            moveDirection.Normalize();
-        }
+        Vector3 moveDir = (transform.right * h + transform.forward * v);
+        if (moveDir.sqrMagnitude > 1f)
+            moveDir.Normalize();
 
-        Vector3 horizontalMove = moveDirection * moveSpeed * Time.deltaTime;
-        controller.Move(horizontalMove);
+        controller.Move(moveDir * moveSpeed * Time.deltaTime);
 
-        // ----- Animator: Speed, IsRunning, Strafe -----
         if (animator != null)
         {
-            // Forward/back speed param (same as before)
             float animSpeed = 0f;
             if (v > 0f) animSpeed = 1f;
             else if (v < 0f) animSpeed = -1f;
             animator.SetFloat(speedParam, animSpeed);
 
-            bool isMovingForwardOrBack = Mathf.Abs(v) > 0.1f;
-            animator.SetBool(isRunningParam, wantsRun && isMovingForwardOrBack);
+            bool movingForwardBack = Mathf.Abs(v) > 0.1f;
+            animator.SetBool(isRunningParam, wantsRun && movingForwardBack);
 
-            // Strafe param for left/right walk
             float strafe = 0f;
-            if (h < -0.1f)      // A key
-                strafe = -1f;   // walk left
-            else if (h > 0.1f)  // D key
-                strafe = 1f;    // walk right
-
+            if (h < -0.1f) strafe = -1f;
+            else if (h > 0.1f) strafe = 1f;
             animator.SetFloat(strafeParam, strafe);
-
-            // DEBUG: see what we're sending to the Animator
-            // Comment this out later if it spams too much
-            if (Mathf.Abs(strafe) > 0.1f || Mathf.Abs(animSpeed) > 0.1f)
-            {
-                Debug.Log($"OnFootPlayerController - v:{v} h:{h}  Speed:{animSpeed}  Strafe:{strafe}");
-            }
         }
     }
 
-    // ------------ JUMP (instant animation + physics) ------------
+    // ------------- JUMP -------------
     private void HandleJump()
     {
-        // Only jump when grounded & space pressed this frame
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
-            // 1) Trigger jump animation immediately
             if (animator != null && !string.IsNullOrEmpty(jumpTriggerParam))
-            {
                 animator.SetTrigger(jumpTriggerParam);
-            }
 
-            // 2) Apply jump velocity same frame
             verticalVelocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
 
-    // ------------ GRAVITY / VERTICAL MOVEMENT ------------
+    // ------------- GRAVITY -------------
     private void ApplyGravity()
     {
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
     }
 
-    // ------------ AIM + SHOOT + AMMO / RELOAD ------------
-    // Right mouse (hold) = aim
-    // Left mouse (while aiming) = shoot (uses 1 ammo)
-    // R = reload ONLY while inside an ammo box trigger
+    // ------------- AIM & SHOOT -------------
     private void HandleAimAndShoot()
     {
         if (animator == null) return;
 
-        // RMB hold → aiming
         bool rightHeld = Input.GetMouseButton(1);
-
         if (rightHeld != isAiming)
         {
             isAiming = rightHeld;
             animator.SetBool(aimBoolParam, isAiming);
         }
 
-        // LMB click while aiming → shoot
         if (isAiming && Input.GetMouseButtonDown(0))
         {
-            // no ammo: show "find ammo" and do nothing else
             if (currentAmmo <= 0)
             {
                 ShowFindAmmoMessage();
+                return;
             }
-            else
-            {
-                // trigger shoot animation
-                animator.ResetTrigger(shootTriggerParam);
-                animator.SetTrigger(shootTriggerParam);
 
-                // TODO: put your real shoot logic here (raycast, spawn projectile, sound, etc.)
+            animator.ResetTrigger(shootTriggerParam);
+            animator.SetTrigger(shootTriggerParam);
 
-                // consume one bullet
-                currentAmmo--;
-                UpdateAmmoUI();
+            // TODO: actual shooting logic (raycast, projectile) here
 
-                // if just hit 0, tell player to find ammo
-                if (currentAmmo <= 0)
-                {
-                    ShowFindAmmoMessage();
-                }
-            }
-        }
+            currentAmmo--;
+            UpdateAmmoUI();
 
-        // R = try reload (only works if standing on ammo box)
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            TryReload();
+            if (currentAmmo <= 0)
+                ShowFindAmmoMessage();
         }
     }
 
-    private void TryReload()
+    // ------------- AMMO BOX INTERACTION (trigger-based E + R) -------------
+    private void HandleAmmoBoxInteraction()
     {
-        // must be standing in an ammo box trigger
-        if (!isInAmmoBoxRange)
+        if (!isInAmmoBoxRange || currentAmmoBox == null)
             return;
 
-        // already full
+        // STEP 1: inside trigger → show "Press E to interact"
+        if (!hasPickedUpAmmoFromBox)
+        {
+            if (currentBoxWorldPrompt != null)
+            {
+                currentBoxWorldPrompt.text = "Press E to interact";
+                currentBoxWorldPrompt.gameObject.SetActive(true);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                hasPickedUpAmmoFromBox = true;
+                Debug.Log("Pressed E: picked up ammo from box");
+
+                if (currentBoxWorldPrompt != null)
+                    currentBoxWorldPrompt.gameObject.SetActive(false);
+
+                if (promptText != null)
+                    promptText.text = "Press R to reload ammo";
+            }
+        }
+        // STEP 2: after E → press R to reload + play animation + destroy box
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Debug.Log("Pressed R: trying to reload from box");
+                TryReloadFromBox();
+            }
+        }
+    }
+
+    private void TryReloadFromBox()
+    {
+        if (currentAmmoBox == null)
+            return;
+
         if (currentAmmo >= maxAmmo)
         {
             if (promptText != null)
@@ -281,63 +256,89 @@ public class OnFootPlayerController : MonoBehaviour
             return;
         }
 
-        // refill to full
+        // 🔥 PLAY RELOAD ANIMATION
+        if (animator != null && !string.IsNullOrEmpty(reloadTriggerParam))
+        {
+            Debug.Log("Reload trigger fired from TryReloadFromBox");
+            animator.ResetTrigger(reloadTriggerParam);
+            animator.SetTrigger(reloadTriggerParam);
+        }
+
+        // Refill immediately for now
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
 
         if (promptText != null)
             promptText.text = "";
+
+        // Destroy box so it's one-use
+        Destroy(currentAmmoBox);
+        currentAmmoBox = null;
+        currentBoxWorldPrompt = null;
+        isInAmmoBoxRange = false;
+        hasPickedUpAmmoFromBox = false;
     }
 
+    // ------------- UI HELPERS -------------
     private void ShowFindAmmoMessage()
     {
         if (promptText != null)
-        {
             promptText.text = "Out of ammo! FIND AMMO!";
-        }
     }
 
     private void UpdateAmmoUI()
     {
         if (ammoText != null)
-        {
             ammoText.text = "Ammo: " + currentAmmo + " / " + maxAmmo;
-        }
     }
 
-    // When player steps into an ammo box trigger
+    // ------------- TRIGGERS FOR AMMO BOXES -------------
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("AmmoBox"))
         {
             isInAmmoBoxRange = true;
+            hasPickedUpAmmoFromBox = false;
+            currentAmmoBox = other.gameObject;
 
-            // if missing ammo, show "Press R"
-            if (currentAmmo < maxAmmo && promptText != null)
+            // find 3D TMP text child
+            currentBoxWorldPrompt = other.GetComponentInChildren<TMP_Text>(true);
+            if (currentBoxWorldPrompt != null)
             {
-                promptText.text = "Press R to reload ammo";
+                currentBoxWorldPrompt.text = "Press E to interact";
+                currentBoxWorldPrompt.gameObject.SetActive(true);
             }
+
+            Debug.Log("Entered AmmoBox trigger");
         }
     }
 
-    // When player leaves the ammo box trigger
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("AmmoBox"))
+        if (other.CompareTag("AmmoBox") && other.gameObject == currentAmmoBox)
         {
             isInAmmoBoxRange = false;
+            hasPickedUpAmmoFromBox = false;
+
+            if (currentBoxWorldPrompt != null)
+            {
+                currentBoxWorldPrompt.gameObject.SetActive(false);
+                currentBoxWorldPrompt = null;
+            }
+
+            currentAmmoBox = null;
 
             if (promptText != null)
             {
-                // if still empty, show "find ammo", else clear text
                 if (currentAmmo <= 0)
                     ShowFindAmmoMessage();
                 else
                     promptText.text = "";
             }
+
+            Debug.Log("Exited AmmoBox trigger");
         }
     }
 
-    // 👇 This is the property the camera script will read
     public bool IsAiming => isAiming;
 }

@@ -21,14 +21,13 @@ public class OnFootPlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Animator Parameter Names")]
-    [SerializeField] private string speedParam = "Speed";
+    [SerializeField] private string speedParam = "Speed";      // float -1..1
     [SerializeField] private string isRunningParam = "IsRunning";
     [SerializeField] private string jumpTriggerParam = "Jump";
     [SerializeField] private string aimBoolParam = "IsAiming";
     [SerializeField] private string shootTriggerParam = "Shoot";
-    [SerializeField] private string strafeParam = "Strafe";
+    [SerializeField] private string strafeParam = "Strafe";    // float -1..1
 
-    // Hard-coded reload trigger name in Animator
     private const string ReloadTriggerName = "Reload";
 
     [Header("State")]
@@ -41,10 +40,23 @@ public class OnFootPlayerController : MonoBehaviour
     public TMP_Text promptText;  // UI center/bottom messages
 
     // Ammo box interaction
-    private bool isInAmmoBoxRange = false;        // true while inside trigger
-    private bool hasPickedUpAmmoFromBox = false;  // true after pressing E; allows R anywhere
-    private GameObject currentAmmoBox = null;     // last box we interacted with
-    private TMP_Text currentBoxWorldPrompt = null; // 3D text above that box
+    private bool isInAmmoBoxRange = false;
+    private bool hasPickedUpAmmoFromBox = false;
+    private GameObject currentAmmoBox = null;
+    private TMP_Text currentBoxWorldPrompt = null;
+
+    // Rotation-based strafe
+    private float rotateStrafe = 0f;
+    private float lastYaw = 0f;
+    private float lastYawDelta = 0f;
+
+    [Header("Rotation Strafe Settings")]
+    [SerializeField] private float rotateStrafeBlendSpeed = 12f;
+    // smaller threshold = legs start moving sooner while turning
+    [SerializeField] private float yawToStrafeThreshold = 0.005f;
+    [SerializeField] private float turningHoldTime = 0.25f; // how long to keep sidestep after turning stops
+
+    private float turningTimer = 0f;
 
     private CharacterController controller;
     private Vector3 verticalVelocity;
@@ -85,8 +97,9 @@ public class OnFootPlayerController : MonoBehaviour
             promptText.text = "";
         }
 
-        // Hide all world prompts at start so they don't show from far away
         HideAllAmmoBoxWorldPrompts();
+
+        lastYaw = transform.eulerAngles.y;
     }
 
     private void Update()
@@ -108,11 +121,21 @@ public class OnFootPlayerController : MonoBehaviour
     {
         if (cameraTransform == null) return;
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float rawMouseX = Input.GetAxis("Mouse X");
+        float rawMouseY = Input.GetAxis("Mouse Y");
 
+        float mouseX = rawMouseX * mouseSensitivity;
+        float mouseY = rawMouseY * mouseSensitivity;
+
+        // Rotate player
         transform.Rotate(Vector3.up * mouseX);
 
+        // compute yaw delta from actual transform
+        float currentYaw = transform.eulerAngles.y;
+        lastYawDelta = Mathf.DeltaAngle(lastYaw, currentYaw); // + = right, - = left
+        lastYaw = currentYaw;
+
+        // camera pitch
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit);
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -131,8 +154,8 @@ public class OnFootPlayerController : MonoBehaviour
     // -------- MOVEMENT --------
     private void HandleMovement()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        float h = Input.GetAxis("Horizontal"); // A/D
+        float v = Input.GetAxis("Vertical");   // W/S
 
         bool wantsRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
@@ -160,20 +183,77 @@ public class OnFootPlayerController : MonoBehaviour
 
         if (animator != null)
         {
+            // SPEED forward/back
             float animSpeed = 0f;
             if (v > 0f) animSpeed = 1f;
             else if (v < 0f) animSpeed = -1f;
-            else animSpeed = 0f;
             animator.SetFloat(speedParam, animSpeed);
 
             bool movingForwardBack = Mathf.Abs(v) > 0.1f;
             animator.SetBool(isRunningParam, wantsRun && movingForwardBack);
 
-            float strafe = 0f;
-            if (h < -0.1f) strafe = -1f;
-            else if (h > 0.1f) strafe = 1f;
-            else strafe = 0f;
+            // -------- STRAFE: A/D OR rotate-in-place with hold timer --------
+            float strafe;
+
+            // A/D press → normal sidestep
+            if (h < -0.1f)
+            {
+                strafe = -1f;
+                rotateStrafe = strafe;
+                turningTimer = 0f; // A/D overrides turning logic
+            }
+            else if (h > 0.1f)
+            {
+                strafe = 1f;
+                rotateStrafe = strafe;
+                turningTimer = 0f;
+            }
+            else
+            {
+                bool isStandingStill = Mathf.Abs(v) < 0.1f;
+
+                // if standing still and turning even a bit, refresh "turning" timer
+                if (isStandingStill && Mathf.Abs(lastYawDelta) > yawToStrafeThreshold)
+                {
+                    turningTimer = turningHoldTime;
+
+                    // decide direction: right or left
+                    float target = Mathf.Sign(lastYawDelta); // -1 or +1
+                    rotateStrafe = Mathf.MoveTowards(
+                        rotateStrafe,
+                        target,
+                        rotateStrafeBlendSpeed * Time.deltaTime
+                    );
+                }
+                else
+                {
+                    // count down timer
+                    if (turningTimer > 0f)
+                    {
+                        turningTimer -= Time.deltaTime;
+                    }
+
+                    // when timer runs out, fade back to 0
+                    if (turningTimer <= 0f)
+                    {
+                        rotateStrafe = Mathf.MoveTowards(
+                            rotateStrafe,
+                            0f,
+                            rotateStrafeBlendSpeed * Time.deltaTime
+                        );
+                    }
+                }
+
+                strafe = rotateStrafe;
+            }
+
             animator.SetFloat(strafeParam, strafe);
+
+            // DEBUG: uncomment if you want to see what's happening
+            // if (Mathf.Abs(strafe) > 0.1f || Mathf.Abs(lastYawDelta) > 0.001f)
+            // {
+            //     Debug.Log($"Strafe={strafe}, yawDelta={lastYawDelta}, turningTimer={turningTimer}");
+            // }
         }
     }
 
@@ -221,7 +301,7 @@ public class OnFootPlayerController : MonoBehaviour
             animator.ResetTrigger(shootTriggerParam);
             animator.SetTrigger(shootTriggerParam);
 
-            // TODO: shooting logic here
+            // TODO: shooting logic
 
             currentAmmo--;
             UpdateAmmoUI();
@@ -236,7 +316,6 @@ public class OnFootPlayerController : MonoBehaviour
     // -------- AMMO BOX INTERACTION --------
     private void HandleAmmoBoxInteraction()
     {
-        // Step 1: inside trigger, haven't picked up yet -> show E and handle E
         if (isInAmmoBoxRange && currentAmmoBox != null && !hasPickedUpAmmoFromBox)
         {
             if (currentBoxWorldPrompt != null)
@@ -248,7 +327,6 @@ public class OnFootPlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 hasPickedUpAmmoFromBox = true;
-                Debug.Log("Pressed E: picked up ammo from box");
 
                 if (currentBoxWorldPrompt != null)
                 {
@@ -262,29 +340,23 @@ public class OnFootPlayerController : MonoBehaviour
             }
         }
 
-        // Step 2: after pickup, R works ANYWHERE
         if (hasPickedUpAmmoFromBox && Input.GetKeyDown(KeyCode.R))
         {
-            Debug.Log("Pressed R: trying to reload from picked-up ammo");
             TryReloadFromBox();
         }
     }
 
     private void TryReloadFromBox()
     {
-        // We only care that the player picked up ammo (hasPickedUpAmmoFromBox)
         if (!hasPickedUpAmmoFromBox)
             return;
 
-        // 🔥 Always fire reload animation when R is pressed after pickup
         if (animator != null)
         {
-            Debug.Log("Reload trigger fired from TryReloadFromBox");
             animator.ResetTrigger(ReloadTriggerName);
             animator.SetTrigger(ReloadTriggerName);
         }
 
-        // Refill ammo if not already full
         if (currentAmmo < maxAmmo)
         {
             currentAmmo = maxAmmo;
@@ -296,7 +368,6 @@ public class OnFootPlayerController : MonoBehaviour
             promptText.text = "";
         }
 
-        // Consume that box (if still around)
         if (currentAmmoBox != null)
         {
             Destroy(currentAmmoBox);
@@ -305,7 +376,7 @@ public class OnFootPlayerController : MonoBehaviour
         currentAmmoBox = null;
         currentBoxWorldPrompt = null;
         isInAmmoBoxRange = false;
-        hasPickedUpAmmoFromBox = false; // need to interact with a new box next time
+        hasPickedUpAmmoFromBox = false;
     }
 
     // -------- UI HELPERS --------
@@ -353,8 +424,6 @@ public class OnFootPlayerController : MonoBehaviour
                 currentBoxWorldPrompt.text = "Press E to interact";
                 currentBoxWorldPrompt.gameObject.SetActive(true);
             }
-
-            Debug.Log("Entered AmmoBox trigger");
         }
     }
 
@@ -370,8 +439,6 @@ public class OnFootPlayerController : MonoBehaviour
                 currentBoxWorldPrompt = null;
             }
 
-            // IMPORTANT: we KEEP hasPickedUpAmmoFromBox as-is here
-            // so R still works after leaving, as long as you pressed E.
             if (!hasPickedUpAmmoFromBox && promptText != null)
             {
                 if (currentAmmo <= 0)
@@ -383,13 +450,8 @@ public class OnFootPlayerController : MonoBehaviour
                     promptText.text = "";
                 }
             }
-
-            Debug.Log("Exited AmmoBox trigger");
         }
     }
 
-    public bool IsAiming
-    {
-        get { return isAiming; }
-    }
+    public bool IsAiming => isAiming;
 }

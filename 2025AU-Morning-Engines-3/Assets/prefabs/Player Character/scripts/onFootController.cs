@@ -21,12 +21,12 @@ public class OnFootPlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [Header("Animator Parameter Names")]
-    [SerializeField] private string speedParam = "Speed";      // float -1..1
+    [SerializeField] private string speedParam = "Speed";
     [SerializeField] private string isRunningParam = "IsRunning";
     [SerializeField] private string jumpTriggerParam = "Jump";
     [SerializeField] private string aimBoolParam = "IsAiming";
     [SerializeField] private string shootTriggerParam = "Shoot";
-    [SerializeField] private string strafeParam = "Strafe";    // float -1..1
+    [SerializeField] private string strafeParam = "Strafe";
 
     private const string ReloadTriggerName = "Reload";
 
@@ -36,11 +36,14 @@ public class OnFootPlayerController : MonoBehaviour
     [Header("Shooting / Ammo")]
     public int maxAmmo = 8;
     public int currentAmmo;
-    public TMP_Text ammoText;    // UI bottom-right
-    public TMP_Text promptText;  // UI center/bottom messages
+    public TMP_Text ammoText;
+    public TMP_Text promptText;
 
     [Header("UI Crosshair")]
-    public GameObject crossHairUI;   // UI Image object
+    public GameObject crossHairUI;
+
+    [Header("Weapon")]
+    public ShotgunShoot shotgunShooter;   // <--- NEW: reference to shotgun script
 
     // Ammo box interaction
     private bool isInAmmoBoxRange = false;
@@ -103,16 +106,14 @@ public class OnFootPlayerController : MonoBehaviour
 
         lastYaw = transform.eulerAngles.y;
 
-        // -------- CROSSHAIR SETUP --------
-        // If nothing is assigned in the Inspector, auto-find by name.
         if (crossHairUI == null)
         {
-            crossHairUI = GameObject.Find("CrossHair"); // make sure the UI object is named CrossHair
+            crossHairUI = GameObject.Find("CrossHair");
         }
 
         if (crossHairUI != null)
         {
-            crossHairUI.SetActive(false);   // hidden at start
+            crossHairUI.SetActive(false);
         }
     }
 
@@ -133,7 +134,6 @@ public class OnFootPlayerController : MonoBehaviour
         HandleAmmoBoxInteraction();
     }
 
-    // -------- LOOK --------
     private void HandleLook()
     {
         if (cameraTransform == null) return;
@@ -147,7 +147,7 @@ public class OnFootPlayerController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
 
         float currentYaw = transform.eulerAngles.y;
-        lastYawDelta = Mathf.DeltaAngle(lastYaw, currentYaw); // + = right, - = left
+        lastYawDelta = Mathf.DeltaAngle(lastYaw, currentYaw);
         lastYaw = currentYaw;
 
         xRotation -= mouseY;
@@ -155,7 +155,6 @@ public class OnFootPlayerController : MonoBehaviour
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    // -------- GROUND --------
     private void GroundCheck()
     {
         isGrounded = controller.isGrounded;
@@ -165,11 +164,10 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- MOVEMENT --------
     private void HandleMovement()
     {
-        float h = Input.GetAxis("Horizontal"); // A/D
-        float v = Input.GetAxis("Vertical");   // W/S
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
         bool wantsRun = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
@@ -227,7 +225,7 @@ public class OnFootPlayerController : MonoBehaviour
                 {
                     turningTimer = turningHoldTime;
 
-                    float target = Mathf.Sign(lastYawDelta); // -1 or +1
+                    float target = Mathf.Sign(lastYawDelta);
                     rotateStrafe = Mathf.MoveTowards(
                         rotateStrafe,
                         target,
@@ -258,7 +256,6 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- JUMP --------
     private void HandleJump()
     {
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
@@ -272,27 +269,23 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- GRAVITY --------
     private void ApplyGravity()
     {
         verticalVelocity.y += gravity * Time.deltaTime;
         controller.Move(verticalVelocity * Time.deltaTime);
     }
 
-    // -------- AIM & SHOOT --------
     private void HandleAimAndShoot()
     {
         if (animator == null) return;
 
         bool rightHeld = Input.GetMouseButton(1);
 
-        // toggle aim state
         if (rightHeld != isAiming)
         {
             isAiming = rightHeld;
             animator.SetBool(aimBoolParam, isAiming);
 
-            // show/hide crosshair
             if (crossHairUI != null)
             {
                 crossHairUI.SetActive(isAiming);
@@ -310,7 +303,11 @@ public class OnFootPlayerController : MonoBehaviour
             animator.ResetTrigger(shootTriggerParam);
             animator.SetTrigger(shootTriggerParam);
 
-            // TODO: shooting logic
+            // NEW: actually fire shotgun pellets
+            if (shotgunShooter != null)
+            {
+                shotgunShooter.Fire();
+            }
 
             currentAmmo--;
             UpdateAmmoUI();
@@ -322,7 +319,6 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- AMMO BOX INTERACTION --------
     private void HandleAmmoBoxInteraction()
     {
         if (isInAmmoBoxRange && currentAmmoBox != null && !hasPickedUpAmmoFromBox)
@@ -388,7 +384,6 @@ public class OnFootPlayerController : MonoBehaviour
         hasPickedUpAmmoFromBox = false;
     }
 
-    // -------- UI HELPERS --------
     private void ShowFindAmmoMessage()
     {
         if (promptText != null)
@@ -405,7 +400,6 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- WORLD PROMPTS --------
     private void HideAllAmmoBoxWorldPrompts()
     {
         GameObject[] boxes = GameObject.FindGameObjectsWithTag("AmmoBox");
@@ -419,7 +413,6 @@ public class OnFootPlayerController : MonoBehaviour
         }
     }
 
-    // -------- TRIGGERS --------
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("AmmoBox"))

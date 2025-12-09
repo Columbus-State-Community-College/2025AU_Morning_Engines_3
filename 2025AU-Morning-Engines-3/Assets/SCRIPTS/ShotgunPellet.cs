@@ -18,8 +18,6 @@ public class ShotgunPellet : MonoBehaviour
         this.damage = damage;
         this.lifeTime = lifeTime;
         initialized = true;
-
-        Debug.Log("ShotgunPellet initialized with speed " + speed + " and damage " + damage);
     }
 
     private void Awake()
@@ -36,7 +34,7 @@ public class ShotgunPellet : MonoBehaviour
 
         if (rb != null)
         {
-            rb.velocity = direction * speed;
+            rb.linearVelocity = direction * speed;
         }
         else
         {
@@ -52,14 +50,27 @@ public class ShotgunPellet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Pellet hit: " + other.name);
+        // Ignore trigger-only colliders (like detection zones, triggers, etc.)
+        if (other.isTrigger)
+        {
+            return;
+        }
 
+        // Ignore the player so pellets do not vanish on firing
+        // Change "Player" here if your player uses a different tag.
+        if (other.CompareTag("Player") || other.GetComponent<CharacterController>() != null)
+        {
+            return;
+        }
+
+        // Apply damage to zombies
         ZombieHealth zombie = other.GetComponent<ZombieHealth>();
         if (zombie != null)
         {
             zombie.TakeDamage(damage);
         }
 
+        // Destroy pellet on any non-player, non-trigger hit
         Destroy(gameObject);
     }
 }

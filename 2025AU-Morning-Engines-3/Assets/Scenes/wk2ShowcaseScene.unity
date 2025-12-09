@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2003653ac24700747b0198a7a2f766e1, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -625,13 +625,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f571b2934b0d44eb5f0013a2f6d733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  walkSpeed: 3
+  runSpeed: 6
+  backwardWalkSpeed: 2.5
+  backwardRunSpeed: 4.5
   gravity: -9.81
   jumpHeight: 1.5
   cameraTransform: {fileID: 979586070}
   mouseSensitivity: 2
   verticalLookLimit: 80
+  animator: {fileID: 0}
+  speedParam: Speed
+  isRunningParam: IsRunning
+  jumpTriggerParam: Jump
+  aimBoolParam: IsAiming
+  shootTriggerParam: Shoot
+  strafeParam: Strafe
   isActive: 1
+  maxAmmo: 8
+  currentAmmo: 0
+  ammoText: {fileID: 0}
+  promptText: {fileID: 0}
+  rotateStrafeBlendSpeed: 12
+  yawToStrafeThreshold: 0.005
+  turningHoldTime: 0.25
 --- !u!143 &1048006107
 CharacterController:
   m_ObjectHideFlags: 0

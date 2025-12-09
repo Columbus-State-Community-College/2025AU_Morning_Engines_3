@@ -9,6 +9,7 @@ public class ShotgunPellet : MonoBehaviour
     private float timer;
 
     private Rigidbody rb;
+    private bool initialized = false;
 
     public void Init(Vector3 dir, float speed, float damage, float lifeTime)
     {
@@ -16,6 +17,9 @@ public class ShotgunPellet : MonoBehaviour
         this.speed = speed;
         this.damage = damage;
         this.lifeTime = lifeTime;
+        initialized = true;
+
+        Debug.Log("ShotgunPellet initialized with speed " + speed + " and damage " + damage);
     }
 
     private void Awake()
@@ -25,9 +29,14 @@ public class ShotgunPellet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!initialized)
+        {
+            return;
+        }
+
         if (rb != null)
         {
-            rb.linearVelocity = direction * speed;
+            rb.velocity = direction * speed;
         }
         else
         {
@@ -43,7 +52,8 @@ public class ShotgunPellet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 🔥 CHANGE IS HERE ↓↓↓
+        Debug.Log("Pellet hit: " + other.name);
+
         ZombieHealth zombie = other.GetComponent<ZombieHealth>();
         if (zombie != null)
         {

@@ -43,7 +43,7 @@ public class OnFootPlayerController : MonoBehaviour
     public GameObject crossHairUI;
 
     [Header("Weapon")]
-    public ShotgunShoot shotgunShooter;   // <--- NEW: reference to shotgun script
+    public ShotgunShoot shotgunShooter;
 
     // Ammo box interaction
     private bool isInAmmoBoxRange = false;
@@ -303,10 +303,14 @@ public class OnFootPlayerController : MonoBehaviour
             animator.ResetTrigger(shootTriggerParam);
             animator.SetTrigger(shootTriggerParam);
 
-            // NEW: actually fire shotgun pellets
             if (shotgunShooter != null)
             {
+                Debug.Log("Player fired shotgun");
                 shotgunShooter.Fire();
+            }
+            else
+            {
+                Debug.LogWarning("OnFootPlayerController: shotgunShooter is not assigned.");
             }
 
             currentAmmo--;

@@ -3,9 +3,9 @@ using UnityEngine;
 public class ShotgunShoot : MonoBehaviour
 {
     [Header("References")]
-    public Transform muzzlePoint;             // barrel tip
-    public Transform shootDirectionReference; // usually the player camera
-    public GameObject pelletPrefab;           // prefab with ShotgunPellet + collider + rigidbody
+    public Transform muzzlePoint;
+    public Transform shootDirectionReference;
+    public GameObject pelletPrefab;
 
     [Header("Shotgun Settings")]
     public int pelletsPerShot = 8;
@@ -16,16 +16,32 @@ public class ShotgunShoot : MonoBehaviour
 
     public void Fire()
     {
-        if (muzzlePoint == null || pelletPrefab == null || shootDirectionReference == null)
+        if (muzzlePoint == null || shootDirectionReference == null || pelletPrefab == null)
+        {
+            Debug.LogWarning("ShotgunShoot: missing reference (muzzlePoint, shootDirectionReference, or pelletPrefab).");
             return;
+        }
+
+        if (pelletsPerShot <= 0)
+        {
+            Debug.LogWarning("ShotgunShoot: pelletsPerShot <= 0, nothing will spawn.");
+            return;
+        }
+
+        if (pelletSpeed <= 0f)
+        {
+            Debug.LogWarning("ShotgunShoot: pelletSpeed <= 0, pellets will not move.");
+        }
 
         Vector3 baseDir = shootDirectionReference.forward;
+
+        Debug.DrawRay(muzzlePoint.position, baseDir * 5f, Color.red, 0.5f);
 
         for (int i = 0; i < pelletsPerShot; i++)
         {
             Vector3 dir = GetSpreadDirection(baseDir);
 
-            GameObject pelletObj = Instantiate(
+            GameObject pelletObj = Object.Instantiate(
                 pelletPrefab,
                 muzzlePoint.position,
                 Quaternion.LookRotation(dir)
@@ -35,6 +51,10 @@ public class ShotgunShoot : MonoBehaviour
             if (pellet != null)
             {
                 pellet.Init(dir, pelletSpeed, pelletDamage, pelletLifeTime);
+            }
+            else
+            {
+                Debug.LogWarning("ShotgunShoot: spawned pelletPrefab without ShotgunPellet component.");
             }
         }
     }

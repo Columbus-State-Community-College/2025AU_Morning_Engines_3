@@ -16,7 +16,7 @@ public class PlayerVehicleSwitcher : MonoBehaviour
     public LayerMask truckLayer; // can be 0 (Everything) and rely on tag
 
     [Header("Truck Camera")]
-    public Vector3 truckCameraOffset = new Vector3(0f, 2.0f, -5.0f); // behind + above seat
+    public Vector3 truckCameraOffset = new Vector3(0f, 2.0f, -5.0f); // kept for potential future use
 
     [Header("State")]
     public bool inVehicle = false;
@@ -50,7 +50,7 @@ public class PlayerVehicleSwitcher : MonoBehaviour
             Debug.LogWarning("PlayerVehicleSwitcher: playerVisualRoot is not assigned. Player will stay visible in vehicle.");
         }
 
-        // Cache the original camera parent + local transform so we can restore it exactly
+        // Cache the original camera parent + local transform so we can restore it on exit
         if (onFootCamera != null)
         {
             Transform camTransform = onFootCamera.transform;
@@ -85,10 +85,12 @@ public class PlayerVehicleSwitcher : MonoBehaviour
             return;
 
         // Look for a truck near the player
+        int mask = (truckLayer.value == 0) ? Physics.AllLayers : truckLayer.value;
+
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
             interactionRadius,
-            truckLayer.value == 0 ? ~0 : truckLayer
+            mask
         );
 
         TruckController truck = null;
@@ -167,20 +169,15 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         transform.position = truck.seatPoint.position;
         transform.rotation = truck.seatPoint.rotation;
 
-        // Move camera to seatPoint with offset, but also keep its world scale safe
+        // Camera handling:
+        //  - Disable on-foot camera while driving
+        //  - Truck controller will enable its own camera
         if (onFootCamera != null)
         {
-            Transform camTransform = onFootCamera.transform;
-
-            // Parent camera while keeping world transform
-            camTransform.SetParent(truck.seatPoint, worldPositionStays: true);
-
-            // Then apply local offset relative to seatPoint
-            camTransform.localPosition = truckCameraOffset;
-            camTransform.localRotation = Quaternion.identity;
+            onFootCamera.gameObject.SetActive(false);
         }
 
-        // Enable truck control
+        // Enable truck control (also enables truck camera inside TruckController)
         truck.SetActive(true);
 
         Debug.Log("Entered vehicle.");
@@ -228,7 +225,7 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         // Hard reset the player's scale to what it was in the scene
         transform.localScale = originalPlayerLocalScale;
 
-        // Restore camera to its original parent and local transform
+        // Restore on-foot camera
         if (onFootCamera != null)
         {
             Transform camTransform = onFootCamera.transform;
@@ -236,6 +233,8 @@ public class PlayerVehicleSwitcher : MonoBehaviour
             camTransform.SetParent(originalCameraParent, worldPositionStays: false);
             camTransform.localPosition = originalCameraLocalPos;
             camTransform.localRotation = originalCameraLocalRot;
+
+            onFootCamera.gameObject.SetActive(true);
         }
 
         // Show player again
@@ -248,7 +247,7 @@ public class PlayerVehicleSwitcher : MonoBehaviour
         if (onFootController != null)
             onFootController.isActive = true;
 
-        // Disable truck control
+        // Disable truck control (also disables its camera)
         currentTruck.SetActive(false);
         currentTruck = null;
 

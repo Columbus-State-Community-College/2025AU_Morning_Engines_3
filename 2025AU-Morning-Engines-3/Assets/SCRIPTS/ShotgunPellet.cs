@@ -43,10 +43,11 @@ public class ShotgunPellet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyHealth enemy = other.GetComponent<EnemyHealth>();
-        if (enemy != null)
+        // 🔥 CHANGE IS HERE ↓↓↓
+        ZombieHealth zombie = other.GetComponent<ZombieHealth>();
+        if (zombie != null)
         {
-            enemy.TakeDamage(damage);
+            zombie.TakeDamage(damage);
         }
 
         Destroy(gameObject);

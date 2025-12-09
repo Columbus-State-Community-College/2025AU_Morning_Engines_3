@@ -39,6 +39,9 @@ public class OnFootPlayerController : MonoBehaviour
     public TMP_Text ammoText;    // UI bottom-right
     public TMP_Text promptText;  // UI center/bottom messages
 
+    [Header("UI Crosshair")]
+    public GameObject crossHairUI;   // UI Image object
+
     // Ammo box interaction
     private bool isInAmmoBoxRange = false;
     private bool hasPickedUpAmmoFromBox = false;
@@ -52,9 +55,8 @@ public class OnFootPlayerController : MonoBehaviour
 
     [Header("Rotation Strafe Settings")]
     [SerializeField] private float rotateStrafeBlendSpeed = 12f;
-    // smaller threshold = legs start moving sooner while turning
     [SerializeField] private float yawToStrafeThreshold = 0.005f;
-    [SerializeField] private float turningHoldTime = 0.25f; // how long to keep sidestep after turning stops
+    [SerializeField] private float turningHoldTime = 0.25f;
 
     private float turningTimer = 0f;
 
@@ -100,12 +102,27 @@ public class OnFootPlayerController : MonoBehaviour
         HideAllAmmoBoxWorldPrompts();
 
         lastYaw = transform.eulerAngles.y;
+
+        // -------- CROSSHAIR SETUP --------
+        // If nothing is assigned in the Inspector, auto-find by name.
+        if (crossHairUI == null)
+        {
+            crossHairUI = GameObject.Find("CrossHair"); // make sure the UI object is named CrossHair
+        }
+
+        if (crossHairUI != null)
+        {
+            crossHairUI.SetActive(false);   // hidden at start
+        }
     }
 
     private void Update()
     {
         if (!isActive)
+        {
+            if (crossHairUI != null) crossHairUI.SetActive(false);
             return;
+        }
 
         HandleLook();
         GroundCheck();
@@ -127,15 +144,12 @@ public class OnFootPlayerController : MonoBehaviour
         float mouseX = rawMouseX * mouseSensitivity;
         float mouseY = rawMouseY * mouseSensitivity;
 
-        // Rotate player
         transform.Rotate(Vector3.up * mouseX);
 
-        // compute yaw delta from actual transform
         float currentYaw = transform.eulerAngles.y;
         lastYawDelta = Mathf.DeltaAngle(lastYaw, currentYaw); // + = right, - = left
         lastYaw = currentYaw;
 
-        // camera pitch
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -verticalLookLimit, verticalLookLimit);
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
@@ -183,7 +197,6 @@ public class OnFootPlayerController : MonoBehaviour
 
         if (animator != null)
         {
-            // SPEED forward/back
             float animSpeed = 0f;
             if (v > 0f) animSpeed = 1f;
             else if (v < 0f) animSpeed = -1f;
@@ -192,15 +205,13 @@ public class OnFootPlayerController : MonoBehaviour
             bool movingForwardBack = Mathf.Abs(v) > 0.1f;
             animator.SetBool(isRunningParam, wantsRun && movingForwardBack);
 
-            // -------- STRAFE: A/D OR rotate-in-place with hold timer --------
             float strafe;
 
-            // A/D press → normal sidestep
             if (h < -0.1f)
             {
                 strafe = -1f;
                 rotateStrafe = strafe;
-                turningTimer = 0f; // A/D overrides turning logic
+                turningTimer = 0f;
             }
             else if (h > 0.1f)
             {
@@ -212,12 +223,10 @@ public class OnFootPlayerController : MonoBehaviour
             {
                 bool isStandingStill = Mathf.Abs(v) < 0.1f;
 
-                // if standing still and turning even a bit, refresh "turning" timer
                 if (isStandingStill && Mathf.Abs(lastYawDelta) > yawToStrafeThreshold)
                 {
                     turningTimer = turningHoldTime;
 
-                    // decide direction: right or left
                     float target = Mathf.Sign(lastYawDelta); // -1 or +1
                     rotateStrafe = Mathf.MoveTowards(
                         rotateStrafe,
@@ -227,13 +236,11 @@ public class OnFootPlayerController : MonoBehaviour
                 }
                 else
                 {
-                    // count down timer
                     if (turningTimer > 0f)
                     {
                         turningTimer -= Time.deltaTime;
                     }
 
-                    // when timer runs out, fade back to 0
                     if (turningTimer <= 0f)
                     {
                         rotateStrafe = Mathf.MoveTowards(
@@ -248,12 +255,6 @@ public class OnFootPlayerController : MonoBehaviour
             }
 
             animator.SetFloat(strafeParam, strafe);
-
-            // DEBUG: uncomment if you want to see what's happening
-            // if (Mathf.Abs(strafe) > 0.1f || Mathf.Abs(lastYawDelta) > 0.001f)
-            // {
-            //     Debug.Log($"Strafe={strafe}, yawDelta={lastYawDelta}, turningTimer={turningTimer}");
-            // }
         }
     }
 
@@ -284,10 +285,18 @@ public class OnFootPlayerController : MonoBehaviour
         if (animator == null) return;
 
         bool rightHeld = Input.GetMouseButton(1);
+
+        // toggle aim state
         if (rightHeld != isAiming)
         {
             isAiming = rightHeld;
             animator.SetBool(aimBoolParam, isAiming);
+
+            // show/hide crosshair
+            if (crossHairUI != null)
+            {
+                crossHairUI.SetActive(isAiming);
+            }
         }
 
         if (isAiming && Input.GetMouseButtonDown(0))

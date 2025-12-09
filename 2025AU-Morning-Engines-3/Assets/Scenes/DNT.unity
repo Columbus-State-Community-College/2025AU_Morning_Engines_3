@@ -613,6 +613,7 @@ MonoBehaviour:
   currentAmmo: 0
   ammoText: {fileID: 1199273832}
   promptText: {fileID: 283719487}
+  crossHairUI: {fileID: 0}
   rotateStrafeBlendSpeed: 7
   yawToStrafeThreshold: 0.2
   turningHoldTime: 0.25
@@ -2351,7 +2352,7 @@ RectTransform:
   m_GameObject: {fileID: 2039033974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5669, y: 0.5669, z: 0.5669}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 169959717}
@@ -2381,7 +2382,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 569b12f10da8a2348a9b320eedbff1e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

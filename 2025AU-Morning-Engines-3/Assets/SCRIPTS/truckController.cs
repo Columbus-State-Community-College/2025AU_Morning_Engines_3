@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -21,10 +22,19 @@ public class TruckController : MonoBehaviour
     public Transform exitPoint;   // Where player appears when exiting
     public Camera truckCamera;    // Camera used when driving
 
+    [Header("Zombie Cargo")]
+    [Tooltip("Parent transform in the truck bed where deposited zombies will be stored.")]
+    public Transform zombieCargoRoot;
+    [Tooltip("Spacing between bodies in the truck bed grid.")]
+    public float cargoSlotSpacing = 1.2f;
+
     [Header("State")]
     public bool isActive = false; // Controlled only when player is inside
 
     private Rigidbody rb;
+
+    // Track which zombies we've loaded so we can place them nicely
+    private readonly List<ZombieHealth> loadedZombies = new List<ZombieHealth>();
 
     private void Awake()
     {
@@ -79,7 +89,7 @@ public class TruckController : MonoBehaviour
             // Forward/back acceleration
             if (Mathf.Abs(throttle) > 0.01f)
             {
-                // Choose separate max speeds for forward vs reverse
+                // Separate max speeds for forward vs reverse
                 float targetMax = (throttle > 0f) ? maxForwardSpeed : maxReverseSpeed;
                 float targetSpeed = targetMax * Mathf.Sign(throttle);
 
@@ -91,7 +101,7 @@ public class TruckController : MonoBehaviour
             }
             else
             {
-                // No throttle: natural slow-down
+                // No throttle: gently slow down forward/back motion
                 localVelocity.z = Mathf.MoveTowards(
                     localVelocity.z,
                     0f,
@@ -131,6 +141,42 @@ public class TruckController : MonoBehaviour
             Quaternion turnRot = Quaternion.Euler(0f, turn, 0f);
             rb.MoveRotation(rb.rotation * turnRot);
         }
+    }
+
+    // ===========================================================
+    // ================== ZOMBIE CARGO API =======================
+    // ===========================================================
+
+    /// <summary>
+    /// Try to deposit a zombie into the truck bed.
+    /// Returns true if successful.
+    /// </summary>
+    public bool TryDepositZombie(ZombieHealth zombie)
+    {
+        if (zombie == null)
+            return false;
+
+        if (zombieCargoRoot == null)
+        {
+            Debug.LogWarning("TruckController: zombieCargoRoot is not assigned.");
+            return false;
+        }
+
+        // Simple 2-wide grid layout in the truck bed
+        int index = loadedZombies.Count;
+        int col = index % 2;
+        int row = index / 2;
+
+        Vector3 localOffset = new Vector3(
+            (col - 0.5f) * cargoSlotSpacing,  // left/right
+            0f,
+            -row * cargoSlotSpacing          // back
+        );
+
+        zombie.SetDeposited(zombieCargoRoot, localOffset);
+        loadedZombies.Add(zombie);
+
+        return true;
     }
 
     public void SetActive(bool active)

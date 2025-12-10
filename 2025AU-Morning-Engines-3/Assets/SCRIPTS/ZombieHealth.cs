@@ -8,14 +8,21 @@ public class ZombieHealth : MonoBehaviour
     private bool isDown = false;
     public bool IsDown => isDown;
 
+    // NEW: is this zombie currently being carried?
+    public bool IsCarried { get; private set; } = false;
+
     private ZombieAI zombieAI;
     private Collider zombieCollider;
     private Rigidbody rb;
 
     // Tip-over settings
     [Header("Tip Over")]
+    [Tooltip("If true, zombie tips forward (face-down). If false, tips sideways.")]
     public bool tipForward = true;
+
+    [Tooltip("How quickly the zombie rotates into its tipped pose.")]
     public float tipSpeed = 6f;
+
     private Quaternion targetRotation;
     private bool tipping = false;
 
@@ -31,13 +38,19 @@ public class ZombieHealth : MonoBehaviour
     {
         if (tipping)
         {
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * tipSpeed);
+            transform.rotation = Quaternion.Lerp(
+                transform.rotation,
+                targetRotation,
+                Time.deltaTime * tipSpeed
+            );
         }
     }
 
     public void TakeDamage(float amount)
     {
-        if (isDown) return;
+        // Don’t take more damage once down or while being carried
+        if (isDown || IsCarried)
+            return;
 
         currentHealth -= amount;
         currentHealth = Mathf.Max(currentHealth, 0f);
@@ -51,6 +64,9 @@ public class ZombieHealth : MonoBehaviour
 
     private void GoDown()
     {
+        if (isDown)
+            return;
+
         isDown = true;
         Debug.Log(name + " is down!");
 
@@ -60,17 +76,25 @@ public class ZombieHealth : MonoBehaviour
             zombieAI.enabled = false;
         }
 
-        // We keep collider so player can still interact
-        // Rotation: tip forward or sideways
-        Vector3 tipEuler;
+        // Let physics handle initial fall to the ground
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
 
+        // Decide which way to tip
+        Vector3 tipEuler;
         if (tipForward)
         {
-            tipEuler = new Vector3(90f, transform.eulerAngles.y, 0f); // face-down
+            // Face-down
+            tipEuler = new Vector3(90f, transform.eulerAngles.y, 0f);
         }
         else
         {
-            tipEuler = new Vector3(0f, transform.eulerAngles.y, 90f); // tip sideways
+            // Sideways
+            tipEuler = new Vector3(0f, transform.eulerAngles.y, 90f);
         }
 
         targetRotation = Quaternion.Euler(tipEuler);
@@ -80,5 +104,102 @@ public class ZombieHealth : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y -= 0.5f;
         transform.position = pos;
+    }
+
+    // ===========================================================
+    // ================== CARRY / DEPOSIT ========================
+    // ===========================================================
+
+    /// <summary>
+    /// Called by ZombieCarrier when the player picks this zombie up.
+    /// Parents it to the carry point and disables physics collisions.
+    /// </summary>
+    public void SetCarried(Transform parent)
+    {
+        if (parent == null)
+        {
+            Debug.LogWarning("ZombieHealth.SetCarried called with null parent.");
+            return;
+        }
+
+        if (!isDown)
+        {
+            // Should only carry dead/down zombies, but we’ll allow it and just log.
+            Debug.LogWarning("ZombieHealth.SetCarried called but zombie is not down yet.");
+        }
+
+        IsCarried = true;
+        tipping = false;
+
+        // Stop AI just in case
+        if (zombieAI != null)
+        {
+            zombieAI.enabled = false;
+        }
+
+        // Turn off physics so it doesn't fight the player or truck
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        // IMPORTANT: disable collider while carried so it doesn't shove the player/truck
+        if (zombieCollider != null)
+        {
+            zombieCollider.enabled = false;
+        }
+
+        // Parent to the carry point on the player's back
+        transform.SetParent(parent);
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
+    }
+
+    /// <summary>
+    /// Called by TruckController when the zombie is dropped into the truck bed.
+    /// Parents it to the cargo root, lays it flat, physics off.
+    /// </summary>
+    public void SetDeposited(Transform truckCargoRoot, Vector3 localOffset)
+    {
+        if (truckCargoRoot == null)
+        {
+            Debug.LogWarning("ZombieHealth.SetDeposited called with null truckCargoRoot.");
+            return;
+        }
+
+        IsCarried = false;  // no longer on player's back
+        isDown = true;      // definitely still a corpse
+        tipping = false;
+
+        transform.SetParent(truckCargoRoot);
+        transform.localPosition = localOffset;
+
+        // Lay the body flat again in the truck bed
+        Vector3 tipEuler;
+        if (tipForward)
+        {
+            tipEuler = new Vector3(90f, transform.eulerAngles.y, 0f);
+        }
+        else
+        {
+            tipEuler = new Vector3(0f, transform.eulerAngles.y, 90f);
+        }
+        transform.localRotation = Quaternion.Euler(tipEuler);
+
+        // Keep it fully static in the truck
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+
+        // IMPORTANT: collider stays disabled in the truck
+        if (zombieCollider != null)
+        {
+            zombieCollider.enabled = false;
+        }
     }
 }

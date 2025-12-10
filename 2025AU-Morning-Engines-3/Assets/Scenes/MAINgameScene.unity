@@ -2532,7 +2532,6 @@ MonoBehaviour:
   exitPoint: {fileID: 137804184}
   truckCamera: {fileID: 779998687}
   zombieCargoRoot: {fileID: 1555396474}
-  cargoSlotSpacing: 1.2
   isActive: 0
 --- !u!65 &1472963905
 BoxCollider:
@@ -2767,7 +2766,7 @@ Transform:
   m_GameObject: {fileID: 1555396473}
   serializedVersion: 2
   m_LocalRotation: {x: -0.46160823, y: -0.0012682843, z: -0.8870782, w: 0.002895433}
-  m_LocalPosition: {x: -1.28, y: 5.467, z: -1.4}
+  m_LocalPosition: {x: -2, y: 5.467, z: -5.97}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []

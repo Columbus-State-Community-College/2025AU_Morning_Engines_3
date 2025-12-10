@@ -8,14 +8,13 @@ public class ZombieHealth : MonoBehaviour
     private bool isDown = false;
     public bool IsDown => isDown;
 
-    // NEW: is this zombie currently being carried?
+    // Is this zombie currently being carried on the player's back?
     public bool IsCarried { get; private set; } = false;
 
     private ZombieAI zombieAI;
     private Collider zombieCollider;
     private Rigidbody rb;
 
-    // Tip-over settings
     [Header("Tip Over")]
     [Tooltip("If true, zombie tips forward (face-down). If false, tips sideways.")]
     public bool tipForward = true;
@@ -137,7 +136,7 @@ public class ZombieHealth : MonoBehaviour
             zombieAI.enabled = false;
         }
 
-        // Turn off physics so it doesn't fight the player or truck
+        // Turn off physics so it doesn't fight the player/truck
         if (rb != null)
         {
             rb.isKinematic = true;
@@ -145,7 +144,7 @@ public class ZombieHealth : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
-        // IMPORTANT: disable collider while carried so it doesn't shove the player/truck
+        // Disable collider while carried so it doesn't shove the player/truck
         if (zombieCollider != null)
         {
             zombieCollider.enabled = false;
@@ -159,7 +158,7 @@ public class ZombieHealth : MonoBehaviour
 
     /// <summary>
     /// Called by TruckController when the zombie is dropped into the truck bed.
-    /// Parents it to the cargo root, lays it flat, physics off.
+    /// Parents it to the cargo root (drop point), snaps exactly to that position, physics off.
     /// </summary>
     public void SetDeposited(Transform truckCargoRoot, Vector3 localOffset)
     {
@@ -173,18 +172,22 @@ public class ZombieHealth : MonoBehaviour
         isDown = true;      // definitely still a corpse
         tipping = false;
 
+        // Parent to the truck drop point
         transform.SetParent(truckCargoRoot);
-        transform.localPosition = localOffset;
 
-        // Lay the body flat again in the truck bed
+        // ALWAYS snap exactly to the cargo root position in local space.
+        // localOffset is kept in the signature but ignored here for simplicity.
+        transform.localPosition = Vector3.zero;
+
+        // Lay the body flat in the truck bed, same every time.
         Vector3 tipEuler;
         if (tipForward)
         {
-            tipEuler = new Vector3(90f, transform.eulerAngles.y, 0f);
+            tipEuler = new Vector3(90f, 0f, 0f);
         }
         else
         {
-            tipEuler = new Vector3(0f, transform.eulerAngles.y, 90f);
+            tipEuler = new Vector3(0f, 0f, 90f);
         }
         transform.localRotation = Quaternion.Euler(tipEuler);
 
@@ -196,7 +199,7 @@ public class ZombieHealth : MonoBehaviour
             rb.angularVelocity = Vector3.zero;
         }
 
-        // IMPORTANT: collider stays disabled in the truck
+        // Collider stays disabled in the truck so it can't mess with physics
         if (zombieCollider != null)
         {
             zombieCollider.enabled = false;

@@ -23,28 +23,20 @@ public class TruckController : MonoBehaviour
     public Camera truckCamera;    // Camera used when driving
 
     [Header("Zombie Cargo")]
-    [Tooltip("Parent transform in the truck bed where deposited zombies will be stored.")]
+    [Tooltip("This should be your 'zombiePoint' child in the truck bed. All zombies snap here.")]
     public Transform zombieCargoRoot;
-    [Tooltip("Spacing between bodies in the truck bed grid.")]
-    public float cargoSlotSpacing = 1.2f;
 
     [Header("State")]
     public bool isActive = false; // Controlled only when player is inside
 
     private Rigidbody rb;
 
-    // Track which zombies we've loaded so we can place them nicely
+    // Track which zombies we've loaded (for scoring / later logic if needed)
     private readonly List<ZombieHealth> loadedZombies = new List<ZombieHealth>();
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
-        // Recommended Rigidbody settings in Inspector:
-        // Use Gravity: true
-        // Drag: small (e.g., 0.5–1)
-        // Angular Drag: ~2
-        // Freeze Rotation X/Z if you don't want the truck to tip over.
     }
 
     private void Start()
@@ -89,7 +81,6 @@ public class TruckController : MonoBehaviour
             // Forward/back acceleration
             if (Mathf.Abs(throttle) > 0.01f)
             {
-                // Separate max speeds for forward vs reverse
                 float targetMax = (throttle > 0f) ? maxForwardSpeed : maxReverseSpeed;
                 float targetSpeed = targetMax * Mathf.Sign(throttle);
 
@@ -130,11 +121,10 @@ public class TruckController : MonoBehaviour
         // Apply velocity back to world space
         rb.linearVelocity = transform.TransformDirection(localVelocity);
 
-        // Steering: only when moving forward/back a bit
+        // Steering: only when moving a bit
         forwardSpeed = localVelocity.z;
         if (Mathf.Abs(forwardSpeed) > 0.5f && Mathf.Abs(steer) > 0.01f)
         {
-            // Scale steering strength by speed so you don't spin on the spot
             float speedFactor = Mathf.InverseLerp(0f, maxForwardSpeed, Mathf.Abs(forwardSpeed));
             float turn = steer * turnSpeed * speedFactor * Time.fixedDeltaTime * Mathf.Sign(forwardSpeed);
 
@@ -148,8 +138,7 @@ public class TruckController : MonoBehaviour
     // ===========================================================
 
     /// <summary>
-    /// Try to deposit a zombie into the truck bed.
-    /// Returns true if successful.
+    /// Drop a zombie at the exact zombieCargoRoot position/origin every time.
     /// </summary>
     public bool TryDepositZombie(ZombieHealth zombie)
     {
@@ -158,20 +147,13 @@ public class TruckController : MonoBehaviour
 
         if (zombieCargoRoot == null)
         {
-            Debug.LogWarning("TruckController: zombieCargoRoot is not assigned.");
+            Debug.LogWarning("TruckController: zombieCargoRoot is not assigned. Drag your 'zombiePoint' here.");
             return false;
         }
 
-        // Simple 2-wide grid layout in the truck bed
-        int index = loadedZombies.Count;
-        int col = index % 2;
-        int row = index / 2;
-
-        Vector3 localOffset = new Vector3(
-            (col - 0.5f) * cargoSlotSpacing,  // left/right
-            0f,
-            -row * cargoSlotSpacing          // back
-        );
+        // We keep the localOffset parameter in the signature for compatibility,
+        // but always pass Vector3.zero so all zombies snap to the same spot.
+        Vector3 localOffset = Vector3.zero;
 
         zombie.SetDeposited(zombieCargoRoot, localOffset);
         loadedZombies.Add(zombie);

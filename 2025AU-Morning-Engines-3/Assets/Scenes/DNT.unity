@@ -2685,6 +2685,7 @@ MonoBehaviour:
   seatPoint: {fileID: 706702874}
   exitPoint: {fileID: 137804184}
   truckCamera: {fileID: 779998687}
+  zombieCargoRoot: {fileID: 0}
   isActive: 0
 --- !u!65 &1472963905
 BoxCollider:

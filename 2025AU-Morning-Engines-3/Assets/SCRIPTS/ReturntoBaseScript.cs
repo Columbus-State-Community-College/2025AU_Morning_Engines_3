@@ -14,7 +14,7 @@ public class ReturnToBaseZone : MonoBehaviour
 
     private void Start()
     {
-        // Try to find player prompt text (same system as drop-off zones)
+        // Grab the player's prompt text (same UI used by other interactions)
         OnFootPlayerController onFoot = FindObjectOfType<OnFootPlayerController>();
         if (onFoot != null)
         {
@@ -24,12 +24,12 @@ public class ReturnToBaseZone : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        // Only react to the TRUCK entering the zone
+        // Only react to the TRUCK being in the zone
         TruckController tc = other.GetComponentInParent<TruckController>();
         if (tc == null || tc != truck)
             return;
 
-        // Must have at least one zombie loaded
+        // Require at least one zombie in the truck
         if (!HasCargo())
             return;
 
@@ -38,7 +38,10 @@ public class ReturnToBaseZone : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // Load menu
+            // Unlock cursor BEFORE loading the menu scene
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+
             SceneManager.LoadScene(mainMenuSceneName);
         }
     }
@@ -50,18 +53,17 @@ public class ReturnToBaseZone : MonoBehaviour
             return;
 
         if (prompt != null && prompt.text == "Press Q to return to base")
+        {
             prompt.text = "";
+        }
     }
 
     private bool HasCargo()
     {
-        // Access the private list from TruckController
-        // We can't access loadedZombies directly since it's private,
-        // but your deposit logic always parents zombies into the cargo root.
         if (truck == null || truck.zombieCargoRoot == null)
             return false;
 
-        // Any children under zombieCargoRoot = at least one deposited zombie
+        // Any child under zombieCargoRoot = at least one deposited zombie
         return truck.zombieCargoRoot.childCount > 0;
     }
 }

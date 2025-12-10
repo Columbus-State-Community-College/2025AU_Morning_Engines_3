@@ -11,8 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainMenuScene.unity
     guid: 1b7a6b3447c0d584ebb3711496711b28
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/DNT.unity
     guid: f83f3c2b73108164a9d979cb9772ea15
+  - enabled: 1
+    path: Assets/Scenes/MAINgameScene.unity
+    guid: 8a34f203e02999244a18147603ec9a8b
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

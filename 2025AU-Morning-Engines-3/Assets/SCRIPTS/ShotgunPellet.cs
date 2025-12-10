@@ -11,6 +11,11 @@ public class ShotgunPellet : MonoBehaviour
     private Rigidbody rb;
     private bool initialized = false;
 
+    // === TRACER ===
+    private LineRenderer tracer;
+    public float tracerLength = 0.5f;     // how long the streak looks
+    public float tracerWidth = 0.03f;     // how thick the streak is
+
     public void Init(Vector3 dir, float speed, float damage, float lifeTime)
     {
         direction = dir.normalized;
@@ -18,6 +23,8 @@ public class ShotgunPellet : MonoBehaviour
         this.damage = damage;
         this.lifeTime = lifeTime;
         initialized = true;
+
+        SetupTracer();
     }
 
     private void Awake()
@@ -28,10 +35,9 @@ public class ShotgunPellet : MonoBehaviour
     private void FixedUpdate()
     {
         if (!initialized)
-        {
             return;
-        }
 
+        // Move pellet
         if (rb != null)
         {
             rb.linearVelocity = direction * speed;
@@ -41,6 +47,16 @@ public class ShotgunPellet : MonoBehaviour
             transform.position += direction * speed * Time.fixedDeltaTime;
         }
 
+        // Update tracer
+        if (tracer != null)
+        {
+            Vector3 endPos = transform.position - direction * tracerLength;
+
+            tracer.SetPosition(0, transform.position);
+            tracer.SetPosition(1, endPos);
+        }
+
+        // Lifetime
         timer += Time.fixedDeltaTime;
         if (timer >= lifeTime)
         {
@@ -50,27 +66,40 @@ public class ShotgunPellet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Ignore trigger-only colliders (like detection zones, triggers, etc.)
         if (other.isTrigger)
-        {
             return;
-        }
 
-        // Ignore the player so pellets do not vanish on firing
-        // Change "Player" here if your player uses a different tag.
         if (other.CompareTag("Player") || other.GetComponent<CharacterController>() != null)
-        {
             return;
-        }
 
-        // Apply damage to zombies
         ZombieHealth zombie = other.GetComponent<ZombieHealth>();
         if (zombie != null)
         {
             zombie.TakeDamage(damage);
         }
 
-        // Destroy pellet on any non-player, non-trigger hit
         Destroy(gameObject);
+    }
+
+    // ============================
+    //       TRACER SETUP
+    // ============================
+    private void SetupTracer()
+    {
+        tracer = gameObject.AddComponent<LineRenderer>();
+
+        tracer.positionCount = 2;
+        tracer.startWidth = tracerWidth;
+        tracer.endWidth = 0f;
+
+        tracer.material = new Material(Shader.Find("Unlit/Color"));
+        tracer.material.color = Color.yellow;   // tracer color
+
+        tracer.numCapVertices = 0;
+        tracer.numCornerVertices = 0;
+
+        // Initial positions
+        tracer.SetPosition(0, transform.position);
+        tracer.SetPosition(1, transform.position - direction * tracerLength);
     }
 }

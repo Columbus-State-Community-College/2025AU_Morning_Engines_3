@@ -614,6 +614,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  animator: {fileID: 689931176}
+  flinchTriggerName: Flinch
+  flinchStateName: Flinch
+  flinchLayerIndex: 1
+  deathTriggerName: Die
+  deathStateName: Death
+  playerController: {fileID: 0}
 --- !u!114 &689931172
 MonoBehaviour:
   m_ObjectHideFlags: 0

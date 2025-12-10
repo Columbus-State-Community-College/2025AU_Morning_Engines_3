@@ -11,10 +11,16 @@ public class ShotgunPellet : MonoBehaviour
     private Rigidbody rb;
     private bool initialized = false;
 
-    // === TRACER ===
+    [Header("Tracer Settings")]
+    public bool enableTracer = true;
+    public float tracerLength = 0.5f;
+    public float tracerWidth = 0.03f;
+    public Color tracerColor = Color.yellow;
+
+    [Tooltip("Optional: assign a material here (e.g. Sprites/Default with yellow color).")]
+    public Material tracerMaterial;
+
     private LineRenderer tracer;
-    public float tracerLength = 0.5f;     // how long the streak looks
-    public float tracerWidth = 0.03f;     // how thick the streak is
 
     public void Init(Vector3 dir, float speed, float damage, float lifeTime)
     {
@@ -24,7 +30,10 @@ public class ShotgunPellet : MonoBehaviour
         this.lifeTime = lifeTime;
         initialized = true;
 
-        SetupTracer();
+        if (enableTracer)
+        {
+            SetupTracer();
+        }
     }
 
     private void Awake()
@@ -47,11 +56,10 @@ public class ShotgunPellet : MonoBehaviour
             transform.position += direction * speed * Time.fixedDeltaTime;
         }
 
-        // Update tracer
+        // Update tracer positions
         if (tracer != null)
         {
             Vector3 endPos = transform.position - direction * tracerLength;
-
             tracer.SetPosition(0, transform.position);
             tracer.SetPosition(1, endPos);
         }
@@ -86,14 +94,40 @@ public class ShotgunPellet : MonoBehaviour
     // ============================
     private void SetupTracer()
     {
-        tracer = gameObject.AddComponent<LineRenderer>();
+        tracer = GetComponent<LineRenderer>();
+        if (tracer == null)
+        {
+            tracer = gameObject.AddComponent<LineRenderer>();
+        }
 
         tracer.positionCount = 2;
+        tracer.useWorldSpace = true;
+
         tracer.startWidth = tracerWidth;
         tracer.endWidth = 0f;
 
-        tracer.material = new Material(Shader.Find("Unlit/Color"));
-        tracer.material.color = Color.yellow;   // tracer color
+        // MATERIAL HANDLING
+        if (tracerMaterial != null)
+        {
+            tracer.material = tracerMaterial;
+        }
+        else
+        {
+            // Fallback: try a safe built-in shader
+            Shader s = Shader.Find("Sprites/Default");
+            if (s != null)
+            {
+                tracer.material = new Material(s);
+            }
+            else
+            {
+                Debug.LogWarning("ShotgunPellet: Could not find Sprites/Default shader. Assign a tracerMaterial in the inspector.");
+            }
+        }
+
+        // Color gradient (start solid, end faded)
+        tracer.startColor = tracerColor;
+        tracer.endColor = new Color(tracerColor.r, tracerColor.g, tracerColor.b, 0f);
 
         tracer.numCapVertices = 0;
         tracer.numCornerVertices = 0;

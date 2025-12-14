@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:2025AU-Morning-Engines-3/Assets/Materials/Zombie Generic Zombie Male Mat.meta
 guid: 051549de2cb7a024c87b871d44d06d6b
 folderAsset: yes
 DefaultImporter:
+========
+guid: fe14ca7327abbfe4393af2d25c4892c1
+PrefabImporter:
+>>>>>>>> 36f01093e11b8525f7d8ec2e83f16727ca5258e2:2025AU-Morning-Engines-3/Assets/prefabs/house/NonEnterableHouse_mesh.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

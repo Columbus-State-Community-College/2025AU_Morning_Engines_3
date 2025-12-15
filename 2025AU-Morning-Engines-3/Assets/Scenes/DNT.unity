@@ -15327,6 +15327,46 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: c7a61e69550851046b9925e21603304e, type: 2}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.233
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.839
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.663
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.0098799085
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.013418509
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.73906344
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.6734297
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -84.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 177.859
+      objectReference: {fileID: 0}
+    - target: {fileID: 4521563387974947100, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 4.031
+      objectReference: {fileID: 0}
     - target: {fileID: 7992985773710132938, guid: 0fcfb0c716439b549aef8799d9b35f5a, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -15505,16 +15545,16 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 286d90e67edba114c94a6dc003cdecff, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.208
+  m_Volume: 0.631
   m_Pitch: 1
   Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 208
+  Priority: 170
   DopplerLevel: 1
   MinDistance: 2
-  MaxDistance: 12
+  MaxDistance: 10
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -15601,9 +15641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 684b3b3655cc3b54aba5aa37c3fc490a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 12
   playerTag: Player
-  minDistance: 2
 --- !u!135 &8613605373748255727
 SphereCollider:
   m_ObjectHideFlags: 0

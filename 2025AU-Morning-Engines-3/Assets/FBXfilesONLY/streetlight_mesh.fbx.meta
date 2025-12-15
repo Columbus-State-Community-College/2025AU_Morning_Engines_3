@@ -65,11 +65,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-<<<<<<< HEAD
-    useFileScale: 1
-=======
     useFileScale: 0
->>>>>>> 36f01093e11b8525f7d8ec2e83f16727ca5258e2
     strictVertexDataChecks: 0
   tangentSpace:
     normalSmoothAngle: 60

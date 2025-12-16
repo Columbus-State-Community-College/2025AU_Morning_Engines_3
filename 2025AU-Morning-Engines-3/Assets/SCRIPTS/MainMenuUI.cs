@@ -1,6 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;   // For Button, Image, Text
-using UnityEngine.SceneManagement;   // Needed for scene loading
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -8,7 +8,6 @@ public class MainMenuUI : MonoBehaviour
 
     private void Awake()
     {
-        // This script must be on MenuPanel (a RectTransform under the Canvas)
         menuPanel = GetComponent<RectTransform>();
         if (menuPanel == null)
         {
@@ -18,34 +17,34 @@ public class MainMenuUI : MonoBehaviour
 
     private void Start()
     {
-        // Create all four buttons at startup
         CreateButton("ENTER CITY", OnEnterCity);
         CreateButton("CHARACTER", OnCharacter);
         CreateButton("SETTINGS", OnSettings);
         CreateButton("EXIT GAME", OnExitGame);
     }
 
-    // ----- Button creation helper -----
     private Button CreateButton(string label, UnityEngine.Events.UnityAction onClick)
     {
-        // Create the button GameObject
-        GameObject buttonGO = new GameObject(label, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(Button));
+        GameObject buttonGO = new GameObject(
+            label,
+            typeof(RectTransform),
+            typeof(CanvasRenderer),
+            typeof(Image),
+            typeof(Button)
+        );
+
         buttonGO.transform.SetParent(menuPanel, false);
 
-        // Background (simple semi-transparent black box)
         Image bg = buttonGO.GetComponent<Image>();
         bg.color = new Color(0f, 0f, 0f, 0.6f);
 
-        // Button component
         Button btn = buttonGO.GetComponent<Button>();
         btn.onClick.AddListener(onClick);
 
-        // Ensure consistent size in the Vertical Layout Group
         LayoutElement layout = buttonGO.AddComponent<LayoutElement>();
         layout.preferredWidth = 2000f;
         layout.preferredHeight = 90f;
 
-        // Create text child
         GameObject textGO = new GameObject("Text", typeof(RectTransform), typeof(Text));
         textGO.transform.SetParent(buttonGO.transform, false);
 
@@ -53,10 +52,9 @@ public class MainMenuUI : MonoBehaviour
         text.text = label;
         text.alignment = TextAnchor.MiddleCenter;
         text.color = Color.white;
-        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");  // Unity 6 built-in font
+        text.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
         text.fontSize = 40;
 
-        // Stretch text to fill the button
         RectTransform textRect = textGO.GetComponent<RectTransform>();
         textRect.anchorMin = Vector2.zero;
         textRect.anchorMax = Vector2.one;
@@ -66,18 +64,16 @@ public class MainMenuUI : MonoBehaviour
         return btn;
     }
 
-    // ----- Button callbacks -----
     private void OnEnterCity()
     {
         Debug.Log("ENTER CITY clicked - loading MAINgameScene.");
-
-        // Load the cutscene
         SceneManager.LoadScene("MAINgameScene");
     }
 
     private void OnCharacter()
     {
-        Debug.Log("CHARACTER clicked - will open inventory later.");
+        Debug.Log("CHARACTER clicked - loading CharacterScene.");
+        SceneManager.LoadScene("CharacterScene");
     }
 
     private void OnSettings()

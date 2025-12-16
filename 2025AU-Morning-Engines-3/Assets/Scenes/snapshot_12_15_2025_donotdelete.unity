@@ -599,6 +599,10 @@ MonoBehaviour:
   yawToStrafeThreshold: 0.2
   turningHoldTime: 0.25
   sensRefreshInterval: 0.25
+  forceAmmoUILayout: 1
+  ammoFontScaleMultiplier: 2
+  ammoAnchoredPosition: {x: -20, y: -95}
+  ammoSizeDelta: {x: 420, y: 70}
 --- !u!143 &689931173
 CharacterController:
   m_ObjectHideFlags: 0

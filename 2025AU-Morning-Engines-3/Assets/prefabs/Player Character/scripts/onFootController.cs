@@ -78,6 +78,13 @@ public class OnFootPlayerController : MonoBehaviour
     private float sensRefreshTimer = 0f;
     [SerializeField] private float sensRefreshInterval = 0.25f;
 
+    // Ammo UI layout (build-safe)
+    [Header("Ammo UI Layout")]
+    [SerializeField] private bool forceAmmoUILayout = true;
+    [SerializeField] private float ammoFontScaleMultiplier = 2f;
+    [SerializeField] private Vector2 ammoAnchoredPosition = new Vector2(-20f, -95f); // under top-right health
+    [SerializeField] private Vector2 ammoSizeDelta = new Vector2(420f, 70f);
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -122,6 +129,8 @@ public class OnFootPlayerController : MonoBehaviour
         {
             crossHairUI.SetActive(false);
         }
+
+        SetupAmmoUIForBuild();
     }
 
     private void Update()
@@ -163,6 +172,28 @@ public class OnFootPlayerController : MonoBehaviour
             sensRefreshTimer = 0f;
             LoadMouseSensitivityFromPrefs(false);
         }
+    }
+
+    private void SetupAmmoUIForBuild()
+    {
+        if (!forceAmmoUILayout) return;
+        if (ammoText == null) return;
+
+        TextMeshProUGUI ammoUGUI = ammoText as TextMeshProUGUI;
+        if (ammoUGUI == null) return;
+
+        float baseSize = ammoUGUI.fontSize;
+        float target = baseSize * ammoFontScaleMultiplier;
+        ammoUGUI.fontSize = Mathf.Clamp(target, 18f, 200f);
+
+        ammoUGUI.alignment = TextAlignmentOptions.TopRight;
+
+        RectTransform rt = ammoUGUI.rectTransform;
+        rt.anchorMin = new Vector2(1f, 1f);
+        rt.anchorMax = new Vector2(1f, 1f);
+        rt.pivot = new Vector2(1f, 1f);
+        rt.anchoredPosition = ammoAnchoredPosition;
+        rt.sizeDelta = ammoSizeDelta;
     }
 
     private void HandleLook()
@@ -362,10 +393,8 @@ public class OnFootPlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // Standard FPS behavior: add to "sack" ammo, do NOT refill mag instantly.
                 spareAmmo += ammoBoxGives;
 
-                // Consume the box
                 if (currentBoxWorldPrompt != null)
                 {
                     currentBoxWorldPrompt.gameObject.SetActive(false);
@@ -393,7 +422,6 @@ public class OnFootPlayerController : MonoBehaviour
 
     private void TryReload()
     {
-        // Reload anytime, as long as mag isn't full and you have spare ammo.
         if (currentAmmo >= maxAmmo) return;
         if (spareAmmo <= 0)
         {
@@ -421,7 +449,6 @@ public class OnFootPlayerController : MonoBehaviour
     {
         if (promptText == null) return;
 
-        // Only show "Press R to reload" when the mag is empty (per your requirement).
         if (currentAmmo <= 0 && spareAmmo > 0)
         {
             promptText.text = "Press R to reload";
@@ -441,7 +468,6 @@ public class OnFootPlayerController : MonoBehaviour
     {
         if (ammoText != null)
         {
-            // You wanted the classic FPS format: mag / sack
             ammoText.text = currentAmmo + " / " + spareAmmo;
         }
     }

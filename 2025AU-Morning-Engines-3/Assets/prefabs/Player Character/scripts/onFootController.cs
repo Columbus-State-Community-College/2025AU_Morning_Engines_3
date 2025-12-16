@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
@@ -34,8 +34,11 @@ public class OnFootPlayerController : MonoBehaviour
     public bool isActive = true;
 
     [Header("Shooting / Ammo")]
-    public int maxAmmo = 8;
-    public int currentAmmo;
+    public int maxAmmo = 8;             // Magazine size
+    public int currentAmmo;             // In-mag ammo
+    public int spareAmmo = 0;           // "Sack" ammo (shown as second number)
+    public int ammoBoxGives = 8;         // Each ammo box adds this many to spareAmmo
+
     public TMP_Text ammoText;
     public TMP_Text promptText;
 
@@ -47,7 +50,6 @@ public class OnFootPlayerController : MonoBehaviour
 
     // Ammo box interaction
     private bool isInAmmoBoxRange = false;
-    private bool hasPickedUpAmmoFromBox = false;
     private GameObject currentAmmoBox = null;
     private TMP_Text currentBoxWorldPrompt = null;
 
@@ -96,11 +98,7 @@ public class OnFootPlayerController : MonoBehaviour
 
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
-
-        if (promptText != null)
-        {
-            promptText.text = "";
-        }
+        UpdatePromptUI();
 
         HideAllAmmoBoxWorldPrompts();
 
@@ -132,6 +130,7 @@ public class OnFootPlayerController : MonoBehaviour
         ApplyGravity();
         HandleAimAndShoot();
         HandleAmmoBoxInteraction();
+        HandleReloadInput();
     }
 
     private void HandleLook()
@@ -296,7 +295,7 @@ public class OnFootPlayerController : MonoBehaviour
         {
             if (currentAmmo <= 0)
             {
-                ShowFindAmmoMessage();
+                UpdatePromptUI();
                 return;
             }
 
@@ -315,17 +314,13 @@ public class OnFootPlayerController : MonoBehaviour
 
             currentAmmo--;
             UpdateAmmoUI();
-
-            if (currentAmmo <= 0)
-            {
-                ShowFindAmmoMessage();
-            }
+            UpdatePromptUI();
         }
     }
 
     private void HandleAmmoBoxInteraction()
     {
-        if (isInAmmoBoxRange && currentAmmoBox != null && !hasPickedUpAmmoFromBox)
+        if (isInAmmoBoxRange && currentAmmoBox != null)
         {
             if (currentBoxWorldPrompt != null)
             {
@@ -335,30 +330,44 @@ public class OnFootPlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                hasPickedUpAmmoFromBox = true;
+                // Standard FPS behavior: add to "sack" ammo, do NOT refill mag instantly.
+                spareAmmo += ammoBoxGives;
 
+                // Consume the box
                 if (currentBoxWorldPrompt != null)
                 {
                     currentBoxWorldPrompt.gameObject.SetActive(false);
                 }
 
-                if (promptText != null)
-                {
-                    promptText.text = "Press R to reload ammo";
-                }
-            }
-        }
+                Destroy(currentAmmoBox);
 
-        if (hasPickedUpAmmoFromBox && Input.GetKeyDown(KeyCode.R))
-        {
-            TryReloadFromBox();
+                currentAmmoBox = null;
+                currentBoxWorldPrompt = null;
+                isInAmmoBoxRange = false;
+
+                UpdateAmmoUI();
+                UpdatePromptUI();
+            }
         }
     }
 
-    private void TryReloadFromBox()
+    private void HandleReloadInput()
     {
-        if (!hasPickedUpAmmoFromBox)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            TryReload();
+        }
+    }
+
+    private void TryReload()
+    {
+        // Reload anytime, as long as mag isn't full and you have spare ammo.
+        if (currentAmmo >= maxAmmo) return;
+        if (spareAmmo <= 0)
+        {
+            UpdatePromptUI();
             return;
+        }
 
         if (animator != null)
         {
@@ -366,41 +375,42 @@ public class OnFootPlayerController : MonoBehaviour
             animator.SetTrigger(ReloadTriggerName);
         }
 
-        if (currentAmmo < maxAmmo)
-        {
-            currentAmmo = maxAmmo;
-            UpdateAmmoUI();
-        }
+        int needed = maxAmmo - currentAmmo;
+        int toLoad = Mathf.Min(needed, spareAmmo);
 
-        if (promptText != null)
-        {
-            promptText.text = "";
-        }
+        currentAmmo += toLoad;
+        spareAmmo -= toLoad;
 
-        if (currentAmmoBox != null)
-        {
-            Destroy(currentAmmoBox);
-        }
-
-        currentAmmoBox = null;
-        currentBoxWorldPrompt = null;
-        isInAmmoBoxRange = false;
-        hasPickedUpAmmoFromBox = false;
+        UpdateAmmoUI();
+        UpdatePromptUI();
     }
 
-    private void ShowFindAmmoMessage()
+    private void UpdatePromptUI()
     {
-        if (promptText != null)
+        if (promptText == null) return;
+
+        // Only show "Press R to reload" when the mag is empty (per your requirement).
+        if (currentAmmo <= 0 && spareAmmo > 0)
+        {
+            promptText.text = "Press R to reload";
+            return;
+        }
+
+        if (currentAmmo <= 0 && spareAmmo <= 0)
         {
             promptText.text = "Out of ammo! FIND AMMO!";
+            return;
         }
+
+        promptText.text = "";
     }
 
     private void UpdateAmmoUI()
     {
         if (ammoText != null)
         {
-            ammoText.text = "Ammo: " + currentAmmo + " / " + maxAmmo;
+            // You wanted the classic FPS format: mag / sack
+            ammoText.text = currentAmmo + " / " + spareAmmo;
         }
     }
 
@@ -445,17 +455,9 @@ public class OnFootPlayerController : MonoBehaviour
                 currentBoxWorldPrompt = null;
             }
 
-            if (!hasPickedUpAmmoFromBox && promptText != null)
-            {
-                if (currentAmmo <= 0)
-                {
-                    ShowFindAmmoMessage();
-                }
-                else
-                {
-                    promptText.text = "";
-                }
-            }
+            currentAmmoBox = null;
+
+            UpdatePromptUI();
         }
     }
 

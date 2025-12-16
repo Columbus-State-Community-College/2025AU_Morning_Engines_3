@@ -24,8 +24,16 @@ public class ZombieDropZone : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (truck != null && truck.TryDepositZombie(carrier.carriedZombie))
+            ZombieHealth zombieToDeposit = carrier.carriedZombie;
+
+            if (truck != null && truck.TryDepositZombie(zombieToDeposit))
             {
+                // Award upgrade point ONLY if this zombie is the glowing variant
+                if (zombieToDeposit != null && zombieToDeposit.TryClaimUpgradePoint())
+                {
+                    UpgradePointsManager.AddPoints(1);
+                }
+
                 carrier.ClearCarriedZombie();
 
                 if (prompt != null && prompt.text == "Press F to drop zombie in truck")

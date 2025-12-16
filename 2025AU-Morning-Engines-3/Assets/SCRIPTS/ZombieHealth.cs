@@ -25,6 +25,12 @@ public class ZombieHealth : MonoBehaviour
     private Quaternion targetRotation;
     private bool tipping = false;
 
+    [Header("Upgrades")]
+    [Tooltip("Turn this on for the glowing zombie variant prefab.")]
+    public bool grantsUpgradePoint = false;
+
+    private bool upgradePointClaimed = false;
+
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -103,6 +109,19 @@ public class ZombieHealth : MonoBehaviour
         Vector3 pos = transform.position;
         pos.y -= 0.5f;
         transform.position = pos;
+    }
+
+    // ===========================================================
+    // ================== UPGRADE POINTS =========================
+    // ===========================================================
+
+    public bool TryClaimUpgradePoint()
+    {
+        if (!grantsUpgradePoint) return false;
+        if (upgradePointClaimed) return false;
+
+        upgradePointClaimed = true;
+        return true;
     }
 
     // ===========================================================

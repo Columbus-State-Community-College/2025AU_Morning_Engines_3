@@ -1,4 +1,4 @@
-﻿﻿using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
@@ -37,7 +37,7 @@ public class OnFootPlayerController : MonoBehaviour
     public int maxAmmo = 8;             // Magazine size
     public int currentAmmo;             // In-mag ammo
     public int spareAmmo = 0;           // "Sack" ammo (shown as second number)
-    public int ammoBoxGives = 8;         // Each ammo box adds this many to spareAmmo
+    public int ammoBoxGives = 8;        // Each ammo box adds this many to spareAmmo
 
     public TMP_Text ammoText;
     public TMP_Text promptText;
@@ -71,6 +71,13 @@ public class OnFootPlayerController : MonoBehaviour
     private bool isAiming;
     private float xRotation = 0f;
 
+    // Settings slider integration (PlayerPrefs)
+    private const string MOUSE_SENS_PREF_KEY = "MouseSensitivity";
+    private const float MOUSE_SENS_DEFAULT = 2f;
+    private float lastLoadedSensitivity = -999f;
+    private float sensRefreshTimer = 0f;
+    [SerializeField] private float sensRefreshInterval = 0.25f;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -95,6 +102,8 @@ public class OnFootPlayerController : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        LoadMouseSensitivityFromPrefs(true);
 
         currentAmmo = maxAmmo;
         UpdateAmmoUI();
@@ -123,6 +132,8 @@ public class OnFootPlayerController : MonoBehaviour
             return;
         }
 
+        RefreshMouseSensitivityPeriodic();
+
         HandleLook();
         GroundCheck();
         HandleMovement();
@@ -131,6 +142,27 @@ public class OnFootPlayerController : MonoBehaviour
         HandleAimAndShoot();
         HandleAmmoBoxInteraction();
         HandleReloadInput();
+    }
+
+    private void LoadMouseSensitivityFromPrefs(bool force)
+    {
+        float saved = PlayerPrefs.GetFloat(MOUSE_SENS_PREF_KEY, MOUSE_SENS_DEFAULT);
+
+        if (force || !Mathf.Approximately(saved, lastLoadedSensitivity))
+        {
+            mouseSensitivity = saved;
+            lastLoadedSensitivity = saved;
+        }
+    }
+
+    private void RefreshMouseSensitivityPeriodic()
+    {
+        sensRefreshTimer += Time.deltaTime;
+        if (sensRefreshTimer >= sensRefreshInterval)
+        {
+            sensRefreshTimer = 0f;
+            LoadMouseSensitivityFromPrefs(false);
+        }
     }
 
     private void HandleLook()

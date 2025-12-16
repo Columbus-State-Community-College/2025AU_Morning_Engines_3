@@ -66,25 +66,21 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnEnterCity()
     {
-        Debug.Log("ENTER CITY clicked - loading MAINgameScene.");
         SceneManager.LoadScene("MAINgameScene");
     }
 
     private void OnCharacter()
     {
-        Debug.Log("CHARACTER clicked - loading CharacterScene.");
         SceneManager.LoadScene("CharacterScene");
     }
 
     private void OnSettings()
     {
-        Debug.Log("SETTINGS clicked - will open settings menu later.");
+        SceneManager.LoadScene("SettingsScene");
     }
 
     private void OnExitGame()
     {
-        Debug.Log("EXIT GAME clicked - quitting game.");
-
         Application.Quit();
 
 #if UNITY_EDITOR

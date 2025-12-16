@@ -1,4 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
 
 [RequireComponent(typeof(Animator))]
 public class MainCharacterSFX : MonoBehaviour
@@ -24,7 +27,7 @@ public class MainCharacterSFX : MonoBehaviour
 
     [Header("Run Detection (matches your Animator params)")]
     public string isRunningParam = "IsRunning"; // bool in your Animator
-    public string speedParam = "Speed";     // float in your Animator (backup)
+    public string speedParam = "Speed";         // float in your Animator (backup)
     public float runSpeedThreshold = 0.60f;     // if Speed > this, treat as running (backup)
 
     [Header("Anti-spam")]
@@ -32,9 +35,6 @@ public class MainCharacterSFX : MonoBehaviour
 
     private Animator anim;
 
-    // 2 AudioSources:
-    // - footSrc: footsteps (NO overlap, NO restart mid-clip)
-    // - oneShotSrc: shoot/reload/flinch/etc
     private AudioSource footSrc;
     private AudioSource oneShotSrc;
 
@@ -44,11 +44,13 @@ public class MainCharacterSFX : MonoBehaviour
     private int lastBaseStateHash = 0;
     private int lastUpperStateHash = 0;
 
+    // NEW: track run/walk mode changes to force correct clip asap
+    private bool lastIsRun = false;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
 
-        // Ensure 2 AudioSources exist on this object
         var sources = GetComponents<AudioSource>();
         if (sources.Length >= 2) { footSrc = sources[0]; oneShotSrc = sources[1]; }
         else if (sources.Length == 1) { footSrc = sources[0]; oneShotSrc = gameObject.AddComponent<AudioSource>(); }
@@ -71,9 +73,6 @@ public class MainCharacterSFX : MonoBehaviour
 
     private void Update()
     {
-        // =========================
-        // FOOTSTEPS (animation-cycle based, no overlap, correct run/walk)
-        // =========================
         var baseInfo = anim.GetCurrentAnimatorStateInfo(0);
 
         bool inLocomotion =
@@ -83,21 +82,33 @@ public class MainCharacterSFX : MonoBehaviour
 
         if (inLocomotion)
         {
-            // Decide running by Animator parameters (NOT by state name)
+            float phase = baseInfo.normalizedTime % 1f;
+
+            // Decide running
             bool isRun = GetIsRunning();
 
-            float phase = baseInfo.normalizedTime % 1f;
+            // NEW: if run/walk toggles (like W then Shift), stop current footstep so correct clip can kick in immediately
+            if (isRun != lastIsRun)
+            {
+                if (footSrc.isPlaying) footSrc.Stop();
+                // reset phase tracking so we don't miss the next hit after the toggle
+                lastPhase = phase;
+                lastIsRun = isRun;
+            }
 
             bool crossed =
                 isRun
-                ? (Crossed(lastPhase, phase, runHitA) || Crossed(lastPhase, phase, runHitB))
-                : (Crossed(lastPhase, phase, walkHitA) || Crossed(lastPhase, phase, walkHitB));
+                    ? (Crossed(lastPhase, phase, runHitA) || Crossed(lastPhase, phase, runHitB))
+                    : (Crossed(lastPhase, phase, walkHitA) || Crossed(lastPhase, phase, walkHitB));
 
             if (crossed)
             {
                 AudioClip clip = isRun ? runStep : walkStep;
 
-                // Never restart mid-clip (prevents "first step looping")
+                // If the wrong clip is playing (rare but possible), switch it
+                if (footSrc.isPlaying && footSrc.clip != clip)
+                    footSrc.Stop();
+
                 if (!footSrc.isPlaying && clip != null && Time.time - lastStepTime >= minTimeBetweenSteps)
                 {
                     footSrc.clip = clip;
@@ -113,11 +124,10 @@ public class MainCharacterSFX : MonoBehaviour
         {
             if (footSrc.isPlaying) footSrc.Stop();
             lastPhase = 0f;
+            lastIsRun = false;
         }
 
-        // =========================
         // OPTIONAL: one-shots on state enter
-        // =========================
         int baseHash = baseInfo.fullPathHash;
         if (baseHash != lastBaseStateHash)
         {
@@ -127,7 +137,7 @@ public class MainCharacterSFX : MonoBehaviour
             lastBaseStateHash = baseHash;
         }
 
-        // UpperBody layer (Reload/Shoot states may or may not be reliable)
+        // UpperBody layer
         if (anim.layerCount > 1)
         {
             var upInfo = anim.GetCurrentAnimatorStateInfo(1);
@@ -138,7 +148,6 @@ public class MainCharacterSFX : MonoBehaviour
                 if (upInfo.IsName("Reload")) PlayOneShotSafe(reload);
                 if (upInfo.IsName("ShootUpperBody")) PlayOneShotSafe(shoot);
                 if (upInfo.IsName("Flinch")) PlayOneShotSafe(flinch);
-
                 lastUpperStateHash = upHash;
             }
         }
@@ -146,7 +155,27 @@ public class MainCharacterSFX : MonoBehaviour
 
     private bool GetIsRunning()
     {
-        // Prefer IsRunning bool if it exists
+        // ✅ Input-based: Shift + (W or S) should ALWAYS count as running audio
+        bool shift = false, forward = false, backward = false;
+
+#if ENABLE_INPUT_SYSTEM
+        var kb = Keyboard.current;
+        if (kb != null)
+        {
+            shift = (kb.leftShiftKey.isPressed || kb.rightShiftKey.isPressed);
+            forward = kb.wKey.isPressed;
+            backward = kb.sKey.isPressed;
+        }
+#else
+        shift = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        forward = Input.GetKey(KeyCode.W);
+        backward = Input.GetKey(KeyCode.S);
+#endif
+
+        if (shift && (forward || backward))
+            return true;
+
+        // Prefer Animator bool if it exists (backup)
         if (HasParam(isRunningParam, AnimatorControllerParameterType.Bool))
             return anim.GetBool(isRunningParam);
 
@@ -162,10 +191,9 @@ public class MainCharacterSFX : MonoBehaviour
         if (string.IsNullOrEmpty(name)) return false;
 
         foreach (var p in anim.parameters)
-        {
             if (p.type == type && p.name == name)
                 return true;
-        }
+
         return false;
     }
 
@@ -181,9 +209,6 @@ public class MainCharacterSFX : MonoBehaviour
         oneShotSrc.PlayOneShot(clip, oneShotVolume);
     }
 
-    // =========================
-    // GUARANTEED calls (use these from your gameplay scripts)
-    // =========================
     public void PlayShootSFX() => PlayOneShotSafe(shoot);
     public void PlayReloadSFX() => PlayOneShotSafe(reload);
     public void PlayFlinchSFX() => PlayOneShotSafe(flinch);

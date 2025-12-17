@@ -31,12 +31,21 @@ public class ZombieHealth : MonoBehaviour
 
     private bool upgradePointClaimed = false;
 
+    // ------------------ ADDED (FORCE IDLE ON DEATH) ------------------
+    private Animator animator;
+    [SerializeField] private string deadIdleState = "Zom_Idle_Anim01";
+    [SerializeField] private float deadIdleCrossFade = 0.05f;
+    // -----------------------------------------------------------------
+
     private void Awake()
     {
         currentHealth = maxHealth;
         zombieAI = GetComponent<ZombieAI>();
         zombieCollider = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
+
+        // Force idle needs an animator, and this model uses it on a child.
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -74,6 +83,17 @@ public class ZombieHealth : MonoBehaviour
 
         isDown = true;
         Debug.Log(name + " is down!");
+
+        // ------------------ ADDED (FORCE IDLE ON DEATH) ------------------
+        if (animator != null)
+        {
+            int h = Animator.StringToHash(deadIdleState);
+            if (animator.HasState(0, h))
+            {
+                animator.CrossFade(h, deadIdleCrossFade);
+            }
+        }
+        // -----------------------------------------------------------------
 
         // Stop AI movement
         if (zombieAI != null)

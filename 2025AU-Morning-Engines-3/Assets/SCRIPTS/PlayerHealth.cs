@@ -7,33 +7,38 @@ using UnityEngine.EventSystems;
 public class PlayerHealth : MonoBehaviour
 {
     [Header("Health Settings")]
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] private float maxHealth = 100f; // this is now BASE health
     private float currentHealth;
     private bool isDead = false;
 
     [Header("Animation References")]
-    [SerializeField] private Animator animator;                 // player animator
+    [SerializeField] private Animator animator;
 
     [SerializeField] private string flinchTriggerName = "Flinch";
-    [SerializeField] private string flinchStateName = "Flinch"; // state name on upper-body layer
-    [SerializeField] private int flinchLayerIndex = 1;          // index of upper-body layer (0 = base, 1 = first extra layer)
+    [SerializeField] private string flinchStateName = "Flinch";
+    [SerializeField] private int flinchLayerIndex = 1;
 
     [SerializeField] private string deathTriggerName = "Die";
-    [SerializeField] private string deathStateName = "Death";   // name of death state in base layer
+    [SerializeField] private string deathStateName = "Death";
 
-    [SerializeField] private OnFootPlayerController playerController; // to disable movement when dead
+    [SerializeField] private OnFootPlayerController playerController;
 
-    // Store position at moment of death so we don't fall
     private Vector3 deathPosition;
 
-    // UI references created at runtime
     private Canvas uiCanvas;
     private TextMeshProUGUI healthText;
     private GameObject deathScreen;
     private Button restartButton;
 
+    private float baseMaxHealth;
+
     private void Awake()
     {
+        baseMaxHealth = maxHealth;
+
+        UpgradeStatsManager.EnsureExists();
+        maxHealth = baseMaxHealth + UpgradeStatsManager.GetHealthBonus();
+
         CacheReferences();
         ResetHealth();
         CreateUI();
@@ -68,14 +73,12 @@ public class PlayerHealth : MonoBehaviour
 
     private void Update()
     {
-        // DEBUG: press H to test damage / flinch without enemies
         if (Input.GetKeyDown(KeyCode.H))
         {
             Debug.Log("DEBUG: H pressed – applying 10 damage");
             TakeDamage(10f);
         }
 
-        // DEBUG: press J to FORCE flinch animation (no health change)
         if (Input.GetKeyDown(KeyCode.J))
         {
             Debug.Log("DEBUG: J pressed – forcing flinch");
@@ -85,7 +88,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void LateUpdate()
     {
-        // Lock player at death position so they don't fall through the map
         if (isDead)
         {
             transform.position = deathPosition;
@@ -103,7 +105,6 @@ public class PlayerHealth : MonoBehaviour
 
         UpdateHealthUI();
 
-        // Play FLINCH animation when taking damage (if still alive)
         if (currentHealth > 0f)
         {
             PlayFlinchAnimation();
@@ -125,14 +126,12 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("PlayerHealth: Triggering flinch (" + flinchTriggerName + ") on layer " + flinchLayerIndex);
 
-        // Fire the trigger so any transitions that listen for it still work
         if (!string.IsNullOrEmpty(flinchTriggerName))
         {
             animator.ResetTrigger(flinchTriggerName);
             animator.SetTrigger(flinchTriggerName);
         }
 
-        // Play flinch state ONLY on the chosen layer (upper-body layer)
         if (!string.IsNullOrEmpty(flinchStateName))
         {
             int safeLayerIndex = Mathf.Clamp(flinchLayerIndex, 0, animator.layerCount - 1);
@@ -155,16 +154,13 @@ public class PlayerHealth : MonoBehaviour
 
         Debug.Log("PlayerHealth: DIE called");
 
-        // Save position at moment of death so we can lock it
         deathPosition = transform.position;
 
-        // Stop player controls
         if (playerController != null)
         {
             playerController.isActive = false;
         }
 
-        // Play DEATH animation on base layer
         if (animator != null)
         {
             Debug.Log("PlayerHealth: Triggering death (" + deathTriggerName + ")");
@@ -176,18 +172,12 @@ public class PlayerHealth : MonoBehaviour
                 animator.SetTrigger(deathTriggerName);
             }
 
-            // Force death state if you want to be extra sure it plays.
-            // Make sure deathStateName matches your death state's name in the Animator.
             if (!string.IsNullOrEmpty(deathStateName))
             {
-                animator.Play(deathStateName, 0, 0f); // base layer = 0
+                animator.Play(deathStateName, 0, 0f);
             }
         }
 
-        // Do NOT freeze time, or the Animator will stop
-        // Time.timeScale = 0f;
-
-        // Unlock and show cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -204,12 +194,8 @@ public class PlayerHealth : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // ===========================================================
-    // ===================== UI CREATION =========================
-    // ===========================================================
     private void CreateUI()
     {
-        // EventSystem (needed for button clicks)
         if (FindObjectOfType<EventSystem>() == null)
         {
             GameObject esObj = new GameObject("EventSystem");
@@ -217,7 +203,6 @@ public class PlayerHealth : MonoBehaviour
             esObj.AddComponent<StandaloneInputModule>();
         }
 
-        // Canvas
         GameObject canvasObj = new GameObject("RuntimeCanvas");
         uiCanvas = canvasObj.AddComponent<Canvas>();
         uiCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -236,7 +221,6 @@ public class PlayerHealth : MonoBehaviour
         canvasRT.anchoredPosition = Vector2.zero;
         canvasRT.sizeDelta = Vector2.zero;
 
-        // Health Text
         GameObject healthObj = new GameObject("HealthText");
         healthObj.transform.SetParent(canvasObj.transform, false);
 
@@ -252,7 +236,6 @@ public class PlayerHealth : MonoBehaviour
         healthRT.anchoredPosition = new Vector2(20f, -20f);
         healthRT.sizeDelta = new Vector2(400f, 80f);
 
-        // Death Screen Panel
         GameObject deathObj = new GameObject("DeathScreen");
         deathObj.transform.SetParent(canvasObj.transform, false);
         deathScreen = deathObj;
@@ -271,7 +254,6 @@ public class PlayerHealth : MonoBehaviour
 
         deathScreen.SetActive(false);
 
-        // "YOU DIED" Text
         GameObject textObj = new GameObject("DeathText");
         textObj.transform.SetParent(deathObj.transform, false);
 
@@ -288,7 +270,6 @@ public class PlayerHealth : MonoBehaviour
         textRT.anchoredPosition = Vector2.zero;
         textRT.sizeDelta = new Vector2(800f, 200f);
 
-        // Restart Button
         GameObject buttonObj = new GameObject("RestartButton");
         buttonObj.transform.SetParent(deathObj.transform, false);
 
@@ -304,7 +285,6 @@ public class PlayerHealth : MonoBehaviour
         buttonRT.anchoredPosition = Vector2.zero;
         buttonRT.sizeDelta = new Vector2(300f, 80f);
 
-        // Button text
         GameObject btnTextObj = new GameObject("ButtonText");
         btnTextObj.transform.SetParent(buttonObj.transform, false);
 
@@ -321,7 +301,6 @@ public class PlayerHealth : MonoBehaviour
         btnTextRT.anchoredPosition = Vector2.zero;
         btnTextRT.sizeDelta = Vector2.zero;
 
-        // Button click hookup
         restartButton.onClick.AddListener(RestartGame);
     }
 }

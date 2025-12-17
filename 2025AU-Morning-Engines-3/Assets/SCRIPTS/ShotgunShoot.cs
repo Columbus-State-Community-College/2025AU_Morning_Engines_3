@@ -22,7 +22,12 @@ public class ShotgunShoot : MonoBehaviour
             return;
         }
 
-        if (pelletsPerShot <= 0)
+        UpgradeStatsManager.EnsureExists();
+
+        int effectivePellets = Mathf.Max(0, pelletsPerShot + UpgradeStatsManager.GetPelletsBonus());
+        float effectiveDamage = Mathf.Max(0f, pelletDamage + UpgradeStatsManager.GetDamageBonus());
+
+        if (effectivePellets <= 0)
         {
             Debug.LogWarning("ShotgunShoot: pelletsPerShot <= 0, nothing will spawn.");
             return;
@@ -37,7 +42,7 @@ public class ShotgunShoot : MonoBehaviour
 
         Debug.DrawRay(muzzlePoint.position, baseDir * 5f, Color.red, 0.5f);
 
-        for (int i = 0; i < pelletsPerShot; i++)
+        for (int i = 0; i < effectivePellets; i++)
         {
             Vector3 dir = GetSpreadDirection(baseDir);
 
@@ -50,7 +55,7 @@ public class ShotgunShoot : MonoBehaviour
             ShotgunPellet pellet = pelletObj.GetComponent<ShotgunPellet>();
             if (pellet != null)
             {
-                pellet.Init(dir, pelletSpeed, pelletDamage, pelletLifeTime);
+                pellet.Init(dir, pelletSpeed, effectiveDamage, pelletLifeTime);
             }
             else
             {

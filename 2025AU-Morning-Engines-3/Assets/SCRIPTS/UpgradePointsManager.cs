@@ -9,6 +9,8 @@ public class UpgradePointsManager : MonoBehaviour
 
     public static event Action<int> OnPointsChanged;
 
+    private const string PREF_KEY_POINTS = "UPGRADE_POINTS";
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,6 +21,10 @@ public class UpgradePointsManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Load saved points (so builds + restarts keep state)
+        Points = PlayerPrefs.GetInt(PREF_KEY_POINTS, 0);
+        OnPointsChanged?.Invoke(Points);
     }
 
     public static void AddPoints(int amount)
@@ -28,13 +34,35 @@ public class UpgradePointsManager : MonoBehaviour
         EnsureExists();
 
         Instance.Points += amount;
+        Instance.Save();
         OnPointsChanged?.Invoke(Instance.Points);
+    }
+
+    public static bool SpendPoints(int amount)
+    {
+        if (amount <= 0) return true;
+
+        EnsureExists();
+
+        if (Instance.Points < amount)
+            return false;
+
+        Instance.Points -= amount;
+        Instance.Save();
+        OnPointsChanged?.Invoke(Instance.Points);
+        return true;
     }
 
     public static int GetPoints()
     {
         EnsureExists();
         return Instance.Points;
+    }
+
+    private void Save()
+    {
+        PlayerPrefs.SetInt(PREF_KEY_POINTS, Points);
+        PlayerPrefs.Save();
     }
 
     private static void EnsureExists()

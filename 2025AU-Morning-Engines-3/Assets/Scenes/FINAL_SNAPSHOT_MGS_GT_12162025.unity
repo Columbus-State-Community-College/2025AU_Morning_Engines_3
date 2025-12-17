@@ -1004,6 +1004,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &169959713
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2151,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &359666422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3212,6 +3216,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &457699247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4051,6 +4057,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &565536241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4894,6 +4902,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &643146984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5326,6 +5336,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1247471311472441839, guid: a58c3cb379036f64cbcabebb5c01fd92, type: 3}
+      propertyPath: maxForwardSpeed
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247471311472441839, guid: a58c3cb379036f64cbcabebb5c01fd92, type: 3}
+      propertyPath: maxReverseSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5823198558117600947, guid: a58c3cb379036f64cbcabebb5c01fd92, type: 3}
       propertyPath: m_Name
       value: pickuptruckprefab
@@ -6849,6 +6867,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &950106960
 GameObject:
   m_ObjectHideFlags: 0
@@ -8831,6 +8851,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &1100250524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9466,6 +9488,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &1111348517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11369,6 +11393,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &1463224760
 GameObject:
   m_ObjectHideFlags: 0
@@ -17572,6 +17598,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &1768264963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23747,6 +23775,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1001 &1884721899
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24682,6 +24712,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &1944022898 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6119398148727532854, guid: c5d9211547ded1049b8d510d70c6f364, type: 3}
@@ -25342,6 +25374,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1 &2039033974
 GameObject:
   m_ObjectHideFlags: 0
@@ -26696,6 +26730,8 @@ MonoBehaviour:
   tipForward: 1
   tipSpeed: 6
   grantsUpgradePoint: 0
+  deadIdleState: Zom_Idle_Anim01
+  deadIdleCrossFade: 0.05
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
